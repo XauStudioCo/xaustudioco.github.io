@@ -7,24 +7,16 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+/* GENERAL */
 
-body{
-background:#0b0b0b;
-color:white;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#020617;color:white;overflow-x:hidden;}
 
 /* NAVBAR */
 
 nav{
 position:fixed;
 top:0;
-left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
@@ -38,190 +30,246 @@ z-index:999;
 .logo{
 font-size:22px;
 font-weight:bold;
-color:#d4af37;
+background:linear-gradient(90deg,#0f172a,#2b1a4a);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 letter-spacing:2px;
 }
 
-nav ul{
-list-style:none;
-display:flex;
-gap:30px;
-}
+nav ul{list-style:none;display:flex;gap:30px;}
+nav ul li a{color:white;text-decoration:none;font-size:14px;}
+nav ul li a:hover{opacity:.7}
 
-nav ul li a{
-color:white;
-text-decoration:none;
-font-size:14px;
-transition:0.3s;
-}
-
-nav ul li a:hover{
-color:#d4af37;
-}
-
-/* HERO */
+/* HERO VIDEO */
 
 .hero{
+position:relative;
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
-url("https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1974&auto=format&fit=crop");
-background-size:cover;
-background-position:center;
+overflow:hidden;
+}
+
+.bg-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+z-index:-1;
 }
 
 .hero h1{
-font-size:60px;
+font-size:64px;
 letter-spacing:4px;
-color:#d4af37;
+background:linear-gradient(90deg,#0f172a,#2b1a4a);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.hero p{
-margin-top:20px;
-font-size:20px;
-max-width:700px;
-}
+.hero p{margin-top:20px;font-size:20px;max-width:700px;margin-left:auto;margin-right:auto;}
 
 .btn{
 margin-top:35px;
 display:inline-block;
 padding:14px 40px;
-background:#d4af37;
-color:black;
+background:linear-gradient(90deg,#0f172a,#2b1a4a);
+color:white;
 text-decoration:none;
-font-weight:bold;
-border-radius:5px;
-transition:0.3s;
+border-radius:6px;
 }
 
-.btn:hover{
-background:white;
-}
+/* PACKS */
 
-/* SERVICES */
-
-.services{
+.packs{
 padding:120px 10%;
 text-align:center;
 }
 
-.services h2{
-font-size:40px;
-margin-bottom:60px;
-color:#d4af37;
-}
+.packs h2{font-size:42px;margin-bottom:60px;}
 
-.grid{
+.pack-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
-.card{
-background:#111;
+.pack{
+background:#0b1120;
 padding:40px;
-border-radius:12px;
-transition:0.3s;
+border-radius:16px;
+border:1px solid #1f2937;
 }
 
-.card:hover{
-transform:translateY(-8px);
-background:#151515;
-}
+.pack h3{font-size:26px;margin-bottom:15px;}
+.price{font-size:32px;margin:20px 0;}
+.pack ul{list-style:none;text-align:left;margin-top:20px;}
+.pack ul li{margin-bottom:10px;}
 
-.card h3{
-margin-bottom:15px;
-color:#d4af37;
-}
-
-/* CONTACT */
+/* FORM */
 
 .contact{
 padding:120px 10%;
+background:#020617;
 text-align:center;
-background:#050505;
 }
 
-.contact h2{
-font-size:38px;
-margin-bottom:20px;
-color:#d4af37;
+form{
+max-width:650px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.contact p{
-margin-bottom:30px;
+input,select,textarea{
+padding:14px;
+border-radius:8px;
+border:none;
+background:#0b1120;
+color:white;
 }
 
-footer{
-padding:30px;
-text-align:center;
-background:black;
-color:#888;
+textarea{height:120px;resize:none;}
+
+button{
+padding:14px;
+border:none;
+border-radius:8px;
+background:linear-gradient(90deg,#0f172a,#2b1a4a);
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
-@media(max-width:768px){
-.hero h1{
-font-size:38px;
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+z-index:9999;
 }
-}
+
+footer{padding:30px;text-align:center;background:black;color:#777;}
 
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
 <div class="logo">XAU STUDIO</div>
 <ul>
-<li><a href="#services">Services</a></li>
+<li><a href="#packs">Packages</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
+<video autoplay muted loop playsinline class="bg-video">
+<source src="https://cdn.coverr.co/videos/coverr-programming-on-laptop-1576/1080p.mp4" type="video/mp4">
+</video>
+
 <div>
 <h1>XAU Studio Co.</h1>
-<p>We help businesses grow through modern branding, websites and digital marketing solutions.</p>
-<a href="#contact" class="btn">Start Your Project</a>
+<p>Modern websites, branding and digital marketing solutions for growing businesses.</p>
+<a href="#contact" class="btn">Start a Project</a>
 </div>
 </section>
 
-<section id="services" class="services">
-<h2>Our Services</h2>
+<!-- PACKS -->
+<section id="packs" class="packs">
+<h2>Our Packages</h2>
 
-<div class="grid">
+<div class="pack-grid">
 
-<div class="card">
-<h3>Branding & Logos</h3>
-<p>Professional logo design and brand identity creation to make your business stand out.</p>
+<div class="pack">
+<h3>Starter</h3>
+<div class="price">$199</div>
+<ul>
+<li>Logo Design</li>
+<li>1 Page Website</li>
+<li>Mobile Optimized</li>
+<li>Basic SEO</li>
+</ul>
 </div>
 
-<div class="card">
-<h3>Website Design</h3>
-<p>Modern, fast and responsive websites built to convert visitors into customers.</p>
+<div class="pack">
+<h3>Growth</h3>
+<div class="price">$399</div>
+<ul>
+<li>5 Page Website</li>
+<li>Brand Colors</li>
+<li>Google Setup</li>
+<li>Contact Forms</li>
+</ul>
 </div>
 
-<div class="card">
-<h3>Social Media</h3>
-<p>We manage and grow your social media presence to attract real clients.</p>
-</div>
-
-<div class="card">
-<h3>Advertising</h3>
-<p>Google Ads and Facebook Ads campaigns optimized to generate leads.</p>
+<div class="pack">
+<h3>Business Pro</h3>
+<div class="price">$699</div>
+<ul>
+<li>Full Website</li>
+<li>Lead Generation Setup</li>
+<li>Social Media Setup</li>
+<li>Priority Support</li>
+</ul>
 </div>
 
 </div>
 </section>
 
+<!-- CONTACT FORM -->
 <section id="contact" class="contact">
-<h2>Contact Us</h2>
-<p>Email: xaustudioco@gmail.com</p>
-<p>We respond within 24 hours.</p>
+<h2>Start Your Project</h2>
+
+<form action="https://formspree.io/f/xayrgaad" method="POST">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email Address" required>
+
+<select name="service">
+<option>Select Service</option>
+<option>Website</option>
+<option>Branding</option>
+<option>Marketing</option>
+<option>Logo</option>
+</select>
+
+<textarea name="message" placeholder="Tell us about your project..."></textarea>
+
+<button type="submit">Send Request</button>
+</form>
 </section>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/14012889597" target="_blank">💬</a>
 
 <footer>
 © 2026 XAU Studio Co. All Rights Reserved.
