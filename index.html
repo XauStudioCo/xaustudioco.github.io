@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>XAU Studio Co.</title>
 
 <style>
 
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -15,170 +17,170 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-background:#0f172a;
+background:#05060a;
 color:white;
+overflow-x:hidden;
 }
 
 /* NAVBAR */
 
-nav{
+.nav{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-padding:18px 60px;
+padding:18px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 z-index:10;
-background:linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+background:linear-gradient(to bottom, rgba(0,0,0,.7), transparent);
 }
 
 .logo{
-height:42px;
+height:38px;
 }
 
-nav a{
+.nav a{
 color:white;
 text-decoration:none;
-margin-left:30px;
+margin-left:28px;
 font-size:15px;
+opacity:.85;
+}
+
+.nav a:hover{
+opacity:1;
 }
 
 /* HERO */
 
 .hero{
-position:relative;
 height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+position:relative;
 overflow:hidden;
 }
 
 .hero video{
 position:absolute;
-top:50%;
-left:50%;
-min-width:100%;
-min-height:100%;
-width:auto;
-height:auto;
-transform:translate(-50%,-50%);
-z-index:-2;
-object-fit:cover;
-}
-
-.overlay{
-position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(#0f172acc,#2b1a4acc);
+object-fit:cover;
+z-index:-2;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(120deg, rgba(15,15,30,.8), rgba(60,0,120,.6));
 z-index:-1;
 }
 
-.hero-content h1{
-font-size:64px;
-margin-bottom:20px;
+.hero-content img{
+width:90px;
+margin-bottom:25px;
+opacity:.95;
 }
 
-.hero-content p{
+.hero h1{
+font-size:56px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+opacity:.9;
 max-width:600px;
 margin:auto;
-opacity:0.9;
 }
 
 .cta{
 margin-top:30px;
-display:inline-block;
-padding:14px 30px;
-background:#7c3aed;
-border-radius:8px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-}
-
-/* PACKAGES */
-
-.packages{
-padding:100px 60px;
-background:#020617;
-text-align:center;
-}
-
-.cards{
-margin-top:50px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-}
-
-.card{
-background:#0f172a;
-padding:30px;
-border-radius:14px;
-}
-
-.price{
-font-size:32px;
-margin:15px 0;
-color:#a78bfa;
-}
-
-/* CONTACT FORM */
-
-.contact{
-padding:100px 20px;
-text-align:center;
-}
-
-form{
-max-width:600px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input,textarea{
-padding:14px;
+padding:14px 32px;
+border-radius:10px;
+background:linear-gradient(90deg,#8f5eff,#c084fc);
 border:none;
-border-radius:8px;
-background:#020617;
 color:white;
-}
-
-button{
-padding:15px;
-background:#7c3aed;
-color:white;
-border:none;
-border-radius:8px;
+font-weight:600;
 font-size:16px;
 cursor:pointer;
 }
 
-/* WHATSAPP */
+/* SECTIONS */
 
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:30px;
-text-decoration:none;
-z-index:20;
+.section{
+padding:100px 8%;
+text-align:center;
+}
+
+.section h2{
+font-size:40px;
+margin-bottom:25px;
+background:linear-gradient(90deg,#8f5eff,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.section p{
+max-width:800px;
+margin:0 auto 20px;
+color:#cfcfcf;
+line-height:1.7;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:50px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+padding:35px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(8px);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#8f5eff;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:36px;
+}
+
+.hero-content img{
+width:70px;
+}
+
+.section{
+padding:70px 6%;
+}
+
+.section h2{
+font-size:28px;
+}
+
 }
 
 </style>
@@ -186,15 +188,17 @@ z-index:20;
 
 <body>
 
-<nav>
-<img src="logo.png" class="logo">
-
+<!-- NAVBAR -->
+<div class="nav">
+<img src="hero-logo.png" class="logo">
 <div>
-<a href="#packages">Packages</a>
-<a href="#contact">Contact</a>
+<a href="#about" data-en="About" data-es="Nosotros">About</a>
+<a href="#services" data-en="Services" data-es="Servicios">Services</a>
+<a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
 </div>
-</nav>
+</div>
 
+<!-- HERO -->
 <section class="hero">
 
 <video autoplay muted loop playsinline>
@@ -204,61 +208,101 @@ z-index:20;
 <div class="overlay"></div>
 
 <div class="hero-content">
-<h1>XAU Studio Co.</h1>
-<p>Modern websites, branding and digital marketing solutions for growing businesses.</p>
-<a href="#contact" class="cta">Start a Project</a>
+<img src="hero-logo.png">
+
+<h1 data-en="XAU Studio Co." data-es="XAU Studio Co.">XAU Studio Co.</h1>
+
+<p data-en="Modern websites, branding and digital marketing solutions for growing businesses."
+data-es="Sitios web modernos, branding y soluciones digitales para negocios en crecimiento.">
+Modern websites, branding and digital marketing solutions for growing businesses.
+</p>
+
+<button class="cta" data-en="Start a Project" data-es="Comenzar Proyecto">Start a Project</button>
+
 </div>
 
 </section>
 
-<section id="packages" class="packages">
-<h2>Our Packages</h2>
+<!-- ABOUT -->
+<section class="section" id="about">
 
-<div class="cards">
+<h2 data-en="About Us" data-es="Sobre Nosotros">About Us</h2>
 
-<div class="card">
-<h3>Starter</h3>
-<p class="price">$199</p>
-<p>Landing Page Website</p>
-<p>Basic Branding</p>
-<p>1 Week Delivery</p>
-</div>
+<p data-en="With over 6+ years of experience, we build high-performance websites and digital platforms using real coding, not templates."
+data-es="Con más de 6 años de experiencia, construimos sitios web y plataformas digitales usando código real, no plantillas.">
+With over 6+ years of experience, we build high-performance websites and digital platforms using real coding, not templates.
+</p>
 
-<div class="card">
-<h3>Business</h3>
-<p class="price">$399</p>
-<p>Multi-page Website</p>
-<p>Brand Kit</p>
-<p>SEO Setup</p>
-</div>
+<p data-en="Our focus is speed, modern design, SEO structure and scalable systems for businesses."
+data-es="Nuestro enfoque es velocidad, diseño moderno, estructura SEO y sistemas escalables para negocios.">
+Our focus is speed, modern design, SEO structure and scalable systems for businesses.
+</p>
 
-<div class="card">
-<h3>Pro</h3>
-<p class="price">$699</p>
-<p>Full Website + Automation</p>
-<p>Lead Forms</p>
-<p>Google Setup</p>
-</div>
-
-</div>
 </section>
 
-<section id="contact" class="contact">
-<h2>Start Your Project</h2>
+<!-- SERVICES -->
+<section class="section" id="services">
 
-<form action="https://formspree.io/f/xrbpavqo" method="POST">
+<h2 data-en="Our Services" data-es="Nuestros Servicios">Our Services</h2>
 
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Email Address" required>
-<input type="text" name="business" placeholder="Business Name">
-<textarea name="message" placeholder="Tell us about your project"></textarea>
+<div class="grid">
 
-<button type="submit">Send Request</button>
+<div class="card">
+<h3 data-en="Custom Websites" data-es="Sitios Web Personalizados">Custom Websites</h3>
+<p data-en="Modern responsive websites built from scratch."
+data-es="Sitios web modernos y responsivos creados desde cero.">Modern responsive websites built from scratch.</p>
+</div>
 
-</form>
+<div class="card">
+<h3 data-en="Brand Identity" data-es="Identidad de Marca">Brand Identity</h3>
+<p data-en="Logos, brand systems and digital presence design."
+data-es="Logos, sistemas de marca y diseño de presencia digital.">Logos, brand systems and digital presence design.</p>
+</div>
+
+<div class="card">
+<h3 data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</h3>
+<p data-en="Website structure optimized for Google ranking."
+data-es="Estructura web optimizada para posicionar en Google.">Website structure optimized for Google ranking.</p>
+</div>
+
+<div class="card">
+<h3 data-en="Web Applications" data-es="Aplicaciones Web">Web Applications</h3>
+<p data-en="Dashboards, booking systems and custom tools."
+data-es="Paneles, sistemas de reservas y herramientas personalizadas.">Dashboards, booking systems and custom tools.</p>
+</div>
+
+</div>
+
 </section>
 
-<a class="whatsapp" href="https://wa.me/14012889597" target="_blank">💬</a>
+<!-- CONTACT -->
+<section class="section" id="contact">
+
+<h2 data-en="Contact Us" data-es="Contáctanos">Contact Us</h2>
+
+<p data-en="Start your project today. We usually respond within 24 hours."
+data-es="Comienza tu proyecto hoy. Normalmente respondemos dentro de 24 horas.">
+Start your project today. We usually respond within 24 hours.
+</p>
+
+<p>WhatsApp: +1 401-288-9597</p>
+
+</section>
+
+<script>
+
+/* AUTO LANGUAGE SYSTEM */
+
+const userLang = navigator.language || navigator.userLanguage;
+
+let lang = "en";
+if(userLang.startsWith("es")) lang = "es";
+
+document.querySelectorAll("[data-en]").forEach(el=>{
+el.textContent = el.getAttribute("data-"+lang);
+});
+
+</script>
 
 </body>
 </html>
