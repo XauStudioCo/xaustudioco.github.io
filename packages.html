@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XAU Studio | Packages</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background: linear-gradient(135deg,#0f172a,#2b1a4a);
+color:white;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:600;
+}
+
+.logo{
+height:32px;
+}
+
+/* HEADER */
+
+.header{
+padding-top:140px;
+text-align:center;
+}
+
+.header h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.header p{
+color:#cfcfcf;
+}
+
+/* CARDS */
+
+.packages{
+margin-top:60px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+padding:40px 20px 80px;
+}
+
+.card{
+width:340px;
+background:rgba(255,255,255,.05);
+border-radius:18px;
+padding:35px;
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.15);
+}
+
+.card h2{
+text-align:center;
+margin:0;
+font-size:28px;
+}
+
+.price{
+font-size:52px;
+text-align:center;
+margin:18px 0;
+font-weight:bold;
+color:#a78bfa;
+}
+
+.features{
+margin-top:20px;
+padding-left:18px;
+}
+
+.features li{
+margin-bottom:10px;
+color:#e5e5e5;
+}
+
+.cta{
+display:block;
+text-align:center;
+margin-top:25px;
+padding:14px;
+background:#8b5cf6;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.cta:hover{
+background:#7c3aed;
+}
+
+@media(max-width:900px){
+.card{
+width:90%;
+}
+.header h1{
+font-size:36px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<img src="logo.png" class="logo">
+<div>
+<a href="index.html" data-i18n="nav_home"></a>
+<a href="index.html#about" data-i18n="nav_about"></a>
+<a href="index.html#services" data-i18n="nav_services"></a>
+<a href="packages.html" data-i18n="nav_packages"></a>
+<a href="index.html#contact" data-i18n="nav_contact"></a>
+</div>
+</nav>
+
+<div class="header">
+<h1 data-i18n="title"></h1>
+<p data-i18n="subtitle"></p>
+</div>
+
+<section class="packages">
+
+<div class="card">
+<h2 data-i18n="essential"></h2>
+<div class="price">$940</div>
+<ul class="features" id="essentialList"></ul>
+<a class="cta" href="https://wa.me/14012889597" target="_blank" data-i18n="whatsapp"></a>
+</div>
+
+<div class="card">
+<h2 data-i18n="professional"></h2>
+<div class="price">$1,600</div>
+<ul class="features" id="proList"></ul>
+<a class="cta" href="https://wa.me/14012889597" target="_blank" data-i18n="whatsapp"></a>
+</div>
+
+<div class="card">
+<h2 data-i18n="elite"></h2>
+<div class="price">$2,100</div>
+<ul class="features" id="eliteList"></ul>
+<a class="cta" href="https://wa.me/14012889597" target="_blank" data-i18n="whatsapp"></a>
+</div>
+
+</section>
+
+<script>
+
+const translations = {
+
+en:{
+nav_home:"Home",
+nav_about:"About",
+nav_services:"Services",
+nav_packages:"Packages",
+nav_contact:"Contact",
+title:"Professional Web Service Packages",
+subtitle:"Options available for the creation and management of your professional website",
+essential:"Essential Pack",
+professional:"Professional Pack",
+elite:"Elite Pack",
+whatsapp:"Chat on WhatsApp",
+
+essential_features:[
+"Business main page",
+"Home, About and Contact sections",
+"Basic professional design",
+"Mobile responsive",
+"Customer contact form",
+"Business info (hours, phone, address)",
+"Limited images",
+"Basic Google setup",
+"Website publication"
+],
+
+pro_features:[
+"Professional homepage",
+"Home, Services, About, Contact and Certificates",
+"Custom design",
+"Fully mobile optimized",
+"Full business information",
+"Project gallery",
+"Client reviews integration",
+"Limited videos",
+"Advanced Google optimization",
+"3 months support",
+"Monthly update included"
+],
+
+elite_features:[
+"Fully custom advanced design",
+"Unlimited sections",
+"Individual service pages",
+"Full contact page",
+"Unlimited photo & video gallery",
+"Online booking calendar",
+"Advanced reviews integration",
+"Advanced SEO keywords positioning",
+"Priority support 6 months",
+"Frequent updates"
+]
+
+},
+
+es:{
+nav_home:"Inicio",
+nav_about:"Nosotros",
+nav_services:"Servicios",
+nav_packages:"Paquetes",
+nav_contact:"Contacto",
+title:"Propuesta de Servicios Web Profesionales",
+subtitle:"Opciones disponibles para la creación y gestión de su sitio web profesional",
+essential:"Paquete Essential",
+professional:"Paquete Profesional",
+elite:"Paquete Elite",
+whatsapp:"Hablar por WhatsApp",
+
+essential_features:[
+"Página principal del negocio",
+"Secciones Inicio, Sobre Nosotros y Contacto",
+"Diseño profesional básico",
+"Adaptado a celulares",
+"Formulario de contacto",
+"Información del negocio",
+"Imágenes limitadas",
+"Configuración básica en Google",
+"Publicación del sitio web"
+],
+
+pro_features:[
+"Página principal profesional",
+"Inicio, Servicios, Sobre Nosotros, Contacto y Certificados",
+"Diseño personalizado",
+"Optimizado para celulares",
+"Información completa del negocio",
+"Galería de proyectos",
+"Integración de reseñas",
+"Videos limitados",
+"Optimización avanzada en Google",
+"Soporte 3 meses",
+"Actualización mensual incluida"
+],
+
+elite_features:[
+"Diseño avanzado personalizado",
+"Secciones ilimitadas",
+"Páginas por servicio",
+"Página de contacto completa",
+"Galería ilimitada",
+"Calendario de reservas",
+"Integración avanzada de reseñas",
+"Posicionamiento SEO avanzado",
+"Soporte prioritario 6 meses",
+"Actualizaciones frecuentes"
+]
+
+}
+
+};
+
+const userLang = navigator.language.startsWith("es") ? "es" : "en";
+const t = translations[userLang];
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.innerText = t[el.dataset.i18n];
+});
+
+function fillList(id,items){
+const ul=document.getElementById(id);
+items.forEach(i=>{
+const li=document.createElement("li");
+li.textContent=i;
+ul.appendChild(li);
+});
+}
+
+fillList("essentialList",t.essential_features);
+fillList("proList",t.pro_features);
+fillList("eliteList",t.elite_features);
+
+</script>
+
+</body>
+</html>
