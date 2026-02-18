@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>XAU Studio Co.</title>
 
 <style>
 
-/* ---------- GLOBAL ---------- */
+/* ===== RESET ===== */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+font-family:Inter,system-ui,Arial;
 }
 
 body{
@@ -21,342 +22,304 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ---------- HEADER ---------- */
+/* ===== NAVBAR ===== */
+
 header{
 position:fixed;
 top:0;
-left:0;
 width:100%;
+padding:18px 60px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 60px;
-z-index:999;
-background:linear-gradient(to bottom, rgba(0,0,0,.55), transparent);
-backdrop-filter: blur(8px);
+z-index:1000;
+background:linear-gradient(to bottom,rgba(0,0,0,.7),transparent);
+backdrop-filter:blur(6px);
 }
 
 header img{
-height:38px;
+height:32px;
 }
 
 nav a{
-color:white;
-margin-left:28px;
+color:#d7d7ff;
+margin-left:30px;
 text-decoration:none;
-font-size:15px;
-opacity:.8;
-transition:.3s;
+font-size:14px;
+transition:.25s;
 }
 
 nav a:hover{
-opacity:1;
-color:#a97cff;
+color:white;
 }
 
-/* ---------- HERO ---------- */
+/* ===== HERO ===== */
 
 .hero{
+position:relative;
 height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 text-align:center;
-padding:0 20px;
-background:
-linear-gradient(135deg, rgba(45,25,100,.75), rgba(0,0,0,.85)),
-url('coding.mp4');
-background-size:cover;
-background-position:center;
+overflow:hidden;
 }
 
-.hero-inner{
+.hero video{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+min-width:100%;
+min-height:100%;
+object-fit:cover;
+filter:blur(2px) brightness(.4);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
+radial-gradient(circle at 20% 80%,rgba(84,0,255,.35),transparent 40%);
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
 max-width:900px;
+padding:20px;
 }
 
-.logo-hero{
-width:70px;
-margin-bottom:18px;
-animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
+.hero-logo{
+height:55px;
+margin-bottom:25px;
+opacity:.95;
 }
 
 .hero h1{
-font-size:52px;
+font-size:58px;
+font-weight:700;
+letter-spacing:.5px;
 margin-bottom:18px;
 }
 
 .hero p{
+color:#c7c7da;
 font-size:18px;
-opacity:.85;
-line-height:1.7;
 margin-bottom:30px;
+line-height:1.6;
 }
 
-.cta{
-background:linear-gradient(45deg,#7b4dff,#b388ff);
-padding:14px 32px;
-border-radius:10px;
+.btn{
+display:inline-block;
+padding:14px 34px;
+border-radius:12px;
+background:linear-gradient(135deg,#7a5cff,#a855f7);
 color:white;
 text-decoration:none;
 font-weight:600;
-display:inline-block;
 transition:.3s;
 }
 
-.cta:hover{
+.btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(123,77,255,.5);
+box-shadow:0 10px 30px rgba(123,92,255,.35);
 }
 
-/* ---------- STATS ---------- */
+/* ===== STATS SECTION (SLOW ANIMATION) ===== */
 
 .stats{
-padding:90px 40px;
+padding:130px 40px;
 text-align:center;
+background:linear-gradient(to bottom,#07070c,#0b0b14);
 }
 
 .stats h2{
-font-size:40px;
+font-size:42px;
 margin-bottom:20px;
-color:#b388ff;
+background:linear-gradient(90deg,#a88bff,#7a5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stats p{
+max-width:700px;
+margin:0 auto 70px;
+color:#bdbddd;
+line-height:1.6;
 }
 
 .stats-grid{
-margin-top:50px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-}
-
-.stat{
-background:rgba(255,255,255,.04);
-padding:30px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.08);
-transition:.3s;
-}
-
-.stat:hover{
-transform:translateY(-6px);
-border-color:#7b4dff;
-}
-
-.number{
-font-size:42px;
-font-weight:700;
-color:#a97cff;
-margin-bottom:6px;
-}
-
-/* ---------- WHY CHOOSE ---------- */
-
-.why{
-padding:90px 40px;
-text-align:center;
-}
-
-.why h2{
-font-size:38px;
-color:#b388ff;
-margin-bottom:50px;
-}
-
-.why-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:28px;
-}
-
-.card{
-padding:28px;
-border-radius:18px;
-background:linear-gradient(145deg,#0e0e18,#08080f);
-border:1px solid rgba(255,255,255,.07);
-transition:.35s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 40px rgba(120,80,255,.2);
-}
-
-.card h3{
-margin-bottom:10px;
-color:#c6a7ff;
-}
-
-.card p{
-opacity:.8;
-line-height:1.6;
-}
-
-/* ---------- TIMELINE PROCESS ---------- */
-
-.process{
-padding:110px 40px;
-}
-
-.process h2{
-text-align:center;
-font-size:38px;
-color:#b388ff;
-margin-bottom:80px;
-}
-
-.timeline{
-position:relative;
-max-width:900px;
+gap:30px;
+max-width:1100px;
 margin:auto;
 }
 
-.timeline::before{
-content:"";
-position:absolute;
-left:50%;
-top:0;
-width:3px;
-height:100%;
-background:#7b4dff;
-transform:translateX(-50%);
-}
-
-.step{
-position:relative;
-width:50%;
-padding:30px 40px;
-}
-
-.step:nth-child(odd){
-left:0;
-text-align:right;
-}
-
-.step:nth-child(even){
-left:50%;
-}
-
-.dot{
-position:absolute;
-top:30px;
-right:-10px;
-width:20px;
-height:20px;
-background:#a97cff;
-border-radius:50%;
-box-shadow:0 0 15px #a97cff;
-}
-
-.step:nth-child(even) .dot{
-left:-10px;
-}
-
-.step h3{
-margin-bottom:8px;
-color:#c6a7ff;
-}
-
-.step p{
-opacity:.8;
-line-height:1.6;
-}
-
-/* ---------- CONTACT ---------- */
-
-.contact{
-padding:110px 40px;
-text-align:center;
-background:linear-gradient(180deg,#0b0b14,#07070c);
-}
-
-.contact h2{
-font-size:38px;
-margin-bottom:20px;
-color:#b388ff;
-}
-
-.contact p{
-opacity:.8;
-margin-bottom:25px;
-}
-
-.whatsapp{
-position:fixed;
-right:22px;
-bottom:22px;
-width:64px;
-height:64px;
-border-radius:50%;
-background:#25D366;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-color:white;
-text-decoration:none;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-z-index:9999;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
-70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
-100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
-}
-
-.popup{
-position:fixed;
-right:95px;
-bottom:32px;
-background:#11111b;
-padding:14px 18px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.08);
-font-size:14px;
-opacity:0;
-transform:translateY(15px);
+.stat-card{
+padding:40px 25px;
+border-radius:18px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(140,120,255,.18);
+backdrop-filter:blur(10px);
 transition:.4s;
+opacity:0;
+transform:translateY(40px);
 }
 
-.popup.show{
+.stat-card.show{
 opacity:1;
 transform:translateY(0);
 }
 
-/* ---------- MOBILE ---------- */
-
-@media(max-width:900px){
-
-header{
-padding:18px 25px;
+.stat-number{
+font-size:52px;
+font-weight:700;
+color:#a88bff;
+margin-bottom:10px;
 }
 
-.hero h1{
-font-size:34px;
+.stat-label{
+color:#cfcff0;
 }
 
-.timeline::before{
-left:10px;
+/* ===== WHY CHOOSE US ===== */
+
+.features{
+padding:120px 40px;
+text-align:center;
+}
+
+.features h2{
+font-size:40px;
+margin-bottom:70px;
+background:linear-gradient(90deg,#a88bff,#7a5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.features-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
+max-width:1100px;
+margin:auto;
+}
+
+.feature{
+padding:35px;
+border-radius:18px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(140,120,255,.15);
+transition:.35s;
+}
+
+.feature:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(120,90,255,.18);
+}
+
+.feature h3{
+margin-bottom:12px;
+color:#a88bff;
+}
+
+.feature p{
+color:#cfcff0;
+line-height:1.6;
+}
+
+/* ===== PROCESS TIMELINE ===== */
+
+.process{
+padding:130px 40px;
+text-align:center;
+}
+
+.process h2{
+font-size:40px;
+margin-bottom:80px;
+background:linear-gradient(90deg,#a88bff,#7a5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.timeline{
+max-width:800px;
+margin:auto;
+text-align:left;
+border-left:2px solid rgba(140,120,255,.35);
+padding-left:40px;
 }
 
 .step{
-width:100%;
-left:0!important;
-text-align:left!important;
-padding-left:40px;
-margin-bottom:40px;
+margin-bottom:50px;
+position:relative;
 }
 
-.step .dot{
-left:0!important;
-right:auto;
+.step::before{
+content:"";
+position:absolute;
+left:-50px;
+top:5px;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#a88bff;
+box-shadow:0 0 15px #7a5cff;
 }
 
+.step h4{
+color:#a88bff;
+margin-bottom:6px;
+font-size:20px;
+}
+
+.step p{
+color:#cfcff0;
+line-height:1.6;
+}
+
+/* ===== CONTACT ===== */
+
+.contact{
+padding:130px 40px;
+text-align:center;
+background:linear-gradient(to top,#07070c,#0b0b14);
+}
+
+.contact h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.contact p{
+color:#cfcff0;
+margin-bottom:35px;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+
+.whatsapp{
+position:fixed;
+bottom:22px;
+right:22px;
+width:58px;
+height:58px;
+border-radius:50%;
+background:#25D366;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:26px;
+box-shadow:0 10px 25px rgba(0,0,0,.5);
+z-index:999;
+cursor:pointer;
 }
 
 </style>
@@ -365,132 +328,146 @@ right:auto;
 <body>
 
 <header>
-<img src="hero-logo.png">
+<img src="logo.png">
 <nav>
-<a href="#why">About</a>
+<a href="#about">About</a>
 <a href="#process">Process</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<div class="hero-inner">
-<img src="hero-logo.png" class="logo-hero">
+<video autoplay muted loop playsinline>
+<source src="coding.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
+<img src="hero-logo.png" class="hero-logo">
 <h1>XAU Studio Co.</h1>
 <p>Modern custom-coded websites, branding and digital systems designed to help real businesses grow online and generate clients.</p>
-<a href="#contact" class="cta">Start a Project</a>
+<a href="#contact" class="btn">Start a Project</a>
 </div>
 </section>
 
-<section class="stats">
+<!-- STATS -->
+<section class="stats" id="about">
 <h2>We build real business websites</h2>
+<p>Not templates. Not page builders. We create real custom coded platforms optimized for speed, ranking and conversion.</p>
+
 <div class="stats-grid">
-<div class="stat"><div class="number" data-target="6">0</div><p>Years Experience</p></div>
-<div class="stat"><div class="number" data-target="50">0</div><p>Projects Completed</p></div>
-<div class="stat"><div class="number" data-target="100">0</div><p>Client Satisfaction</p></div>
-<div class="stat"><div class="number" data-target="24">0</div><p>Hour Response Time</p></div>
+<div class="stat-card">
+<div class="stat-number" data-target="6">0</div>
+<div class="stat-label">Years Experience</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number" data-target="50">0</div>
+<div class="stat-label">Projects Completed</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number" data-target="100">0</div>
+<div class="stat-label">Satisfied Clients</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number" data-target="24">0</div>
+<div class="stat-label">Hour Response Time</div>
+</div>
 </div>
 </section>
 
-<section class="why" id="why">
+<!-- WHY CHOOSE US -->
+<section class="features">
 <h2>Why choose XAU Studio</h2>
-<div class="why-grid">
 
-<div class="card">
+<div class="features-grid">
+<div class="feature">
 <h3>Custom Coding</h3>
-<p>We build from scratch using real development technologies. No templates, no page builders, no shortcuts.</p>
+<p>We build everything from scratch. No templates. No Wordpress builders. Faster websites and better Google ranking.</p>
 </div>
 
-<div class="card">
+<div class="feature">
 <h3>SEO Structure</h3>
-<p>Your website is built correctly for Google so it can actually rank and bring leads.</p>
+<p>Your website is optimized technically so Google understands your business and ranks it locally.</p>
 </div>
 
-<div class="card">
+<div class="feature">
 <h3>Conversion Focused</h3>
-<p>We design websites to generate calls, messages and customers — not just look pretty.</p>
+<p>We design to generate leads, not just look pretty. Calls, forms and real customers.</p>
 </div>
 
-<div class="card">
-<h3>Business Guidance</h3>
-<p>We help you understand your online presence and how to grow digitally.</p>
+<div class="feature">
+<h3>Business Support</h3>
+<p>We guide you after launch with strategy, improvements and growth planning.</p>
 </div>
-
 </div>
 </section>
 
+<!-- PROCESS -->
 <section class="process" id="process">
 <h2>Our Process</h2>
 
 <div class="timeline">
-
 <div class="step">
-<div class="dot"></div>
-<h3>Consultation</h3>
-<p>We learn about your business, services and goals to plan your online strategy.</p>
+<h4>1. Consultation</h4>
+<p>We learn your business, services, competitors and goals.</p>
 </div>
 
 <div class="step">
-<div class="dot"></div>
-<h3>Design</h3>
-<p>We design your website layout and user experience based on your brand.</p>
+<h4>2. Strategy & Design</h4>
+<p>We plan your structure and create a high-converting layout.</p>
 </div>
 
 <div class="step">
-<div class="dot"></div>
-<h3>Development</h3>
-<p>Your website is coded and optimized for speed, SEO and performance.</p>
+<h4>3. Development</h4>
+<p>We code, optimize speed and implement SEO structure.</p>
 </div>
 
 <div class="step">
-<div class="dot"></div>
-<h3>Launch</h3>
-<p>Your website goes live and starts generating leads.</p>
+<h4>4. Launch</h4>
+<p>Your business goes live and starts getting clients.</p>
 </div>
-
 </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
 <h2>Start your project</h2>
-<p>Usually we respond within 24 hours.</p>
-<a class="cta" href="https://wa.me/14012889597">Message on WhatsApp</a>
+<p>Schedule a demo and see how your future website will work.</p>
+<a href="https://calendly.com/" class="btn">Schedule a Demo</a>
 </section>
 
-<a class="whatsapp" href="https://wa.me/14012889597">💬</a>
-<div class="popup" id="popup">Have questions? Message us on WhatsApp.</div>
+<div class="whatsapp" onclick="window.open('https://wa.me/14012889597')">💬</div>
 
 <script>
 
-/* number animation */
-const counters=document.querySelectorAll('.number');
+/* COUNTER + SLOW APPEAR */
+const cards=document.querySelectorAll('.stat-card');
+const numbers=document.querySelectorAll('.stat-number');
 
-const run=()=>{
-counters.forEach(counter=>{
-const update=()=>{
-const target=+counter.getAttribute('data-target');
-const current=+counter.innerText;
-const inc=target/70;
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+let num=entry.target.querySelector('.stat-number');
+let target=+num.getAttribute('data-target');
+let count=0;
+let speed=40;
 
-if(current<target){
-counter.innerText=Math.ceil(current+inc);
-setTimeout(update,20);
-}else{
-counter.innerText=target;
+let update=setInterval(()=>{
+count++;
+num.innerText=count+"+";
+if(count>=target) clearInterval(update);
+},speed);
+
+observer.unobserve(entry.target);
 }
-}
-update();
 });
-}
+},{threshold:.5});
 
-window.addEventListener('scroll',()=>{
-if(window.scrollY>200) run();
-});
-
-/* whatsapp popup */
-setTimeout(()=>{
-document.getElementById('popup').classList.add('show');
-},3500);
+cards.forEach(card=>observer.observe(card));
 
 </script>
 
