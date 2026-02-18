@@ -5,39 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XAU Studio Co.</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
 
+/* ---------- GLOBAL ---------- */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
 body{
-background:#050507;
+background:#07070f;
 color:white;
+overflow-x:hidden;
 }
 
-/* NAVBAR */
-
+/* ---------- NAVBAR ---------- */
 nav{
 position:fixed;
 top:0;
+left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 8%;
-z-index:1000;
-background:rgba(0,0,0,0.35);
+padding:18px 60px;
+z-index:999;
+background:rgba(7,7,15,.35);
 backdrop-filter:blur(10px);
 }
 
-nav img{
-height:38px;
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo img{
+height:34px;
 }
 
 nav ul{
@@ -47,18 +47,19 @@ list-style:none;
 }
 
 nav a{
-text-decoration:none;
 color:white;
-font-weight:500;
-transition:.3s;
+text-decoration:none;
+font-size:15px;
+opacity:.8;
+transition:.25s;
 }
 
 nav a:hover{
-color:#b16cff;
+opacity:1;
+color:#b37cff;
 }
 
-/* HERO */
-
+/* ---------- HERO ---------- */
 .hero{
 height:100vh;
 display:flex;
@@ -66,7 +67,6 @@ align-items:center;
 justify-content:center;
 text-align:center;
 position:relative;
-overflow:hidden;
 }
 
 .hero video{
@@ -75,177 +75,214 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-2;
+filter:blur(1px) brightness(.45);
 }
 
-.overlay{
+.gradient{
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(120deg,rgba(10,10,20,.85),rgba(60,0,120,.65));
+background:radial-gradient(circle at 70% 30%,rgba(165,95,255,.45),transparent 40%),
+linear-gradient(180deg,rgba(7,7,15,.3),#07070f 90%);
 z-index:-1;
 }
 
 .hero-content img{
-height:70px;
-margin-bottom:25px;
+width:70px;
+margin-bottom:20px;
 }
 
 .hero h1{
 font-size:58px;
 font-weight:700;
+letter-spacing:.5px;
 }
 
 .hero p{
 margin-top:12px;
+color:#cfcfe8;
+max-width:650px;
+margin-inline:auto;
 font-size:18px;
-opacity:.85;
-max-width:620px;
-margin-left:auto;
-margin-right:auto;
 }
 
 .cta{
-margin-top:28px;
+margin-top:30px;
 display:inline-block;
-padding:14px 32px;
-border-radius:10px;
-background:linear-gradient(90deg,#8b5cf6,#a855f7);
+padding:16px 42px;
+border-radius:14px;
+background:linear-gradient(90deg,#7b5cff,#b37cff);
 color:white;
 text-decoration:none;
 font-weight:600;
-transition:.35s;
+transition:.3s;
 }
 
 .cta:hover{
-transform:scale(1.08);
+transform:scale(1.05);
+box-shadow:0 10px 35px rgba(123,92,255,.5);
 }
 
-/* SECTIONS */
-
+/* ---------- AUTHORITY ---------- */
 section{
-padding:120px 10%;
+padding:120px 20px;
 text-align:center;
 }
 
 h2{
-font-size:40px;
-margin-bottom:18px;
-color:#b16cff;
+font-size:42px;
+background:linear-gradient(90deg,#b37cff,#7b5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:20px;
 }
 
-/* ABOUT */
-
-.about p{
-max-width:800px;
+.sub{
+color:#bdbdd7;
+max-width:700px;
 margin:auto;
-opacity:.8;
-line-height:1.7;
+margin-bottom:60px;
+font-size:18px;
 }
 
-/* SERVICES */
-
-.services-grid{
+.stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:30px;
-margin-top:50px;
+max-width:1000px;
+margin:auto;
 }
 
-.card{
-background:#0d0d14;
-padding:30px;
+.stat{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:35px 20px;
 border-radius:16px;
-transition:.35s;
-border:1px solid transparent;
+transition:.3s;
 }
 
-.card:hover{
+.stat:hover{
 transform:translateY(-8px);
-border:1px solid #8b5cf6;
+box-shadow:0 10px 40px rgba(123,92,255,.25);
 }
 
-/* PROCESS */
+.stat h3{
+font-size:32px;
+color:#caa6ff;
+margin-bottom:5px;
+}
+
+/* ---------- WHY ---------- */
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:35px;
+margin-top:60px;
+max-width:1100px;
+margin-inline:auto;
+}
+
+.why-card{
+background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+border:1px solid rgba(123,92,255,.2);
+padding:35px;
+border-radius:18px;
+transition:.35s;
+}
+
+.why-card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 60px rgba(123,92,255,.35);
+}
+
+/* ---------- PROCESS ---------- */
 
 .process{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-margin-top:50px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+max-width:1100px;
+margin:auto;
+margin-top:60px;
 }
 
 .step{
-background:#0c0c12;
-padding:25px;
-border-radius:14px;
+padding:30px;
+border-radius:16px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.07);
 }
 
-/* PACK PREVIEW */
-
-.pack-preview{
-margin-top:60px;
-background:linear-gradient(120deg,#120c25,#0a0a10);
-padding:60px 30px;
-border-radius:18px;
+.step h3{
+color:#caa6ff;
+margin-bottom:10px;
 }
 
-.pack-preview a{
-margin-top:20px;
+/* ---------- PACKAGES CTA ---------- */
+
+.packages-preview{
+background:radial-gradient(circle at center,#1a1333 0%,#07070f 80%);
+padding:140px 20px;
+}
+
+.packages-btn{
 display:inline-block;
-padding:12px 28px;
-background:#8b5cf6;
-border-radius:8px;
-text-decoration:none;
+margin-top:25px;
+padding:16px 40px;
+background:linear-gradient(90deg,#7b5cff,#b37cff);
+border-radius:12px;
 color:white;
+text-decoration:none;
+font-weight:600;
 }
 
-/* CONTACT */
+/* ---------- CONTACT ---------- */
 
-.contact p{
-opacity:.8;
+.contact{
+padding:120px 20px;
 }
-
-/* WHATSAPP BUTTON */
 
 .whatsapp{
 position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-width:60px;
-height:60px;
+right:22px;
+bottom:22px;
+width:65px;
+height:65px;
 border-radius:50%;
+background:#25D366;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:30px;
 color:white;
 text-decoration:none;
+box-shadow:0 10px 30px rgba(0,0,0,.5);
 z-index:999;
-box-shadow:0 0 18px rgba(0,0,0,.4);
 }
-
-/* POPUP */
 
 .popup{
 position:fixed;
-bottom:95px;
-right:20px;
-background:#111;
+right:100px;
+bottom:30px;
+background:#11111a;
 padding:18px 20px;
-border-radius:14px;
-box-shadow:0 0 18px rgba(0,0,0,.4);
-display:none;
-max-width:240px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.1);
+width:220px;
+opacity:0;
+transform:translateY(20px);
+transition:.4s;
 }
 
-.popup button{
-margin-top:10px;
-padding:8px 14px;
-background:#8b5cf6;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
+.popup.show{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:768px){
+.hero h1{font-size:40px}
+nav{padding:18px 20px}
 }
 
 </style>
@@ -253,112 +290,101 @@ cursor:pointer;
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
+<div class="logo">
 <img src="logo.png">
+</div>
 <ul>
-<li><a href="#about" id="navAbout">About</a></li>
-<li><a href="#services" id="navServices">Services</a></li>
-<li><a href="packages.html" id="navPackages">Packages</a></li>
-<li><a href="#contact" id="navContact">Contact</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="packages.html">Packages</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
 <video autoplay muted loop playsinline>
 <source src="coding.mp4" type="video/mp4">
 </video>
-<div class="overlay"></div>
+<div class="gradient"></div>
 
 <div class="hero-content">
 <img src="hero-logo.png">
 <h1>XAU Studio Co.</h1>
-<p id="heroDesc">Modern websites, branding and digital marketing solutions for growing businesses.</p>
-<a href="https://wa.me/14012889597" class="cta" id="ctaBtn">Start a Project</a>
+<p id="tagline">Modern websites, branding and digital marketing solutions for growing businesses.</p>
+<a class="cta" href="packages.html">Start a Project</a>
 </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about" class="about">
-<h2 id="aboutTitle">About Us</h2>
-<p id="aboutText">
-With over 6+ years of experience, we build high-performance websites and digital platforms using real coding, not templates. Our focus is speed, SEO structure and scalable systems for businesses.
-</p>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-<h2 id="servicesTitle">Our Services</h2>
-<div class="services-grid">
-<div class="card"><h3>Custom Websites</h3><p>Fully responsive websites built from scratch.</p></div>
-<div class="card"><h3>Brand Identity</h3><p>Logos, brand systems and digital presence.</p></div>
-<div class="card"><h3>SEO Optimization</h3><p>Optimized structure for Google ranking.</p></div>
-<div class="card"><h3>Web Applications</h3><p>Dashboards, booking systems and tools.</p></div>
+<!-- AUTHORITY -->
+<section id="about">
+<h2>We build real business websites</h2>
+<p class="sub">Not templates. Not page builders. Real custom-coded websites designed to convert visitors into customers.</p>
+
+<div class="stats">
+<div class="stat"><h3>6+ Years</h3><span>Experience</span></div>
+<div class="stat"><h3>50+</h3><span>Projects</span></div>
+<div class="stat"><h3>100%</h3><span>Mobile Responsive</span></div>
+<div class="stat"><h3>24h</h3><span>Response</span></div>
+</div>
+</section>
+
+<!-- WHY -->
+<section>
+<h2>Why choose XAU Studio</h2>
+<div class="why-grid">
+<div class="why-card"><h3>Custom Coding</h3><p>We build from scratch for speed and Google ranking.</p></div>
+<div class="why-card"><h3>SEO Structure</h3><p>Your site is optimized to appear in search engines.</p></div>
+<div class="why-card"><h3>Conversion Focused</h3><p>We design websites that generate clients.</p></div>
+<div class="why-card"><h3>Business Support</h3><p>We guide you through your online growth.</p></div>
 </div>
 </section>
 
 <!-- PROCESS -->
 <section>
-<h2 id="processTitle">Our Process</h2>
+<h2>Our Process</h2>
 <div class="process">
-<div class="step"><h3>1. Strategy</h3><p>We understand your business and goals.</p></div>
-<div class="step"><h3>2. Design</h3><p>We create modern UI/UX tailored to your brand.</p></div>
-<div class="step"><h3>3. Development</h3><p>Real coding optimized for speed and SEO.</p></div>
-<div class="step"><h3>4. Launch</h3><p>We publish and connect your business to Google.</p></div>
+<div class="step"><h3>1. Consultation</h3><p>We learn your business and goals.</p></div>
+<div class="step"><h3>2. Design</h3><p>We create a custom layout for your brand.</p></div>
+<div class="step"><h3>3. Development</h3><p>We code and optimize your website.</p></div>
+<div class="step"><h3>4. Launch</h3><p>Your business goes live online.</p></div>
 </div>
 </section>
 
-<!-- PACK PREVIEW -->
-<section>
-<div class="pack-preview">
-<h2 id="packTitle">Website Packages</h2>
-<p id="packDesc">We offer different plans depending on your business needs.</p>
-<a href="packages.html" id="packBtn">View Packages</a>
-</div>
+<!-- PACKAGES -->
+<section class="packages-preview">
+<h2>Website Packages</h2>
+<p>Flexible solutions for every business stage.</p>
+<a href="packages.html" class="packages-btn">View Plans</a>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-<h2 id="contactTitle">Contact Us</h2>
-<p id="contactText">Start your project today. We usually respond within 24 hours.</p>
+<h2>Contact Us</h2>
+<p>Start your project today. We usually respond within 24 hours.</p>
 <p>WhatsApp: +1 401-288-9597</p>
 </section>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/14012889597">💬</a>
-
-<!-- POPUP -->
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/14012889597" target="_blank">💬</a>
 <div class="popup" id="popup">
-<p id="popupText">Have questions? Message us on WhatsApp.</p>
-<button onclick="window.location.href='https://wa.me/14012889597'">Chat</button>
+Have questions?<br>
+Message us on WhatsApp.
 </div>
 
 <script>
-setTimeout(()=>{document.getElementById("popup").style.display="block"},6000);
 
-/* AUTO LANGUAGE */
+// popup
+setTimeout(()=>document.getElementById("popup").classList.add("show"),3000);
 
+// language auto detect
 const userLang = navigator.language || navigator.userLanguage;
-
 if(userLang.startsWith('es')){
-document.getElementById("navAbout").textContent="Nosotros";
-document.getElementById("navServices").textContent="Servicios";
-document.getElementById("navPackages").textContent="Paquetes";
-document.getElementById("navContact").textContent="Contacto";
-document.getElementById("heroDesc").textContent="Sitios web modernos, branding y marketing digital para negocios.";
-document.getElementById("ctaBtn").textContent="Iniciar Proyecto";
-document.getElementById("aboutTitle").textContent="Sobre Nosotros";
-document.getElementById("aboutText").textContent="Con más de 6 años de experiencia creamos sitios web profesionales con programación real, optimizados para velocidad, SEO y crecimiento de negocios.";
-document.getElementById("servicesTitle").textContent="Servicios";
-document.getElementById("processTitle").textContent="Nuestro Proceso";
-document.getElementById("packTitle").textContent="Paquetes Web";
-document.getElementById("packDesc").textContent="Ofrecemos diferentes planes dependiendo tu negocio.";
-document.getElementById("packBtn").textContent="Ver Paquetes";
-document.getElementById("contactTitle").textContent="Contáctanos";
-document.getElementById("contactText").textContent="Inicia tu proyecto hoy. Respondemos en menos de 24 horas.";
-document.getElementById("popupText").textContent="¿Tienes preguntas? Escríbenos por WhatsApp.";
+document.getElementById("tagline").innerText="Sitios web modernos, branding y soluciones digitales para hacer crecer negocios.";
 }
+
 </script>
 
 </body>
