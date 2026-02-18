@@ -7,40 +7,45 @@
 
 <style>
 
-/* GENERAL */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-body{background:#020617;color:white;overflow-x:hidden;}
+body{
+background:#0f172a;
+color:white;
+}
 
 /* NAVBAR */
 
 nav{
 position:fixed;
 top:0;
+left:0;
 width:100%;
+padding:18px 60px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 60px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:999;
+z-index:10;
+background:linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
 }
 
 .logo{
-font-size:22px;
-font-weight:bold;
-background:linear-gradient(90deg,#0f172a,#2b1a4a);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-letter-spacing:2px;
+height:42px;
 }
 
-nav ul{list-style:none;display:flex;gap:30px;}
-nav ul li a{color:white;text-decoration:none;font-size:14px;}
-nav ul li a:hover{opacity:.7}
+nav a{
+color:white;
+text-decoration:none;
+margin-left:30px;
+font-size:15px;
+}
 
-/* HERO VIDEO */
+/* HERO */
 
 .hero{
 position:relative;
@@ -52,106 +57,107 @@ text-align:center;
 overflow:hidden;
 }
 
-.bg-video{
+.hero video{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
+top:50%;
+left:50%;
+min-width:100%;
+min-height:100%;
+width:auto;
+height:auto;
+transform:translate(-50%,-50%);
 z-index:-2;
+object-fit:cover;
 }
 
-.hero::after{
-content:"";
+.overlay{
 position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.65);
+background:linear-gradient(#0f172acc,#2b1a4acc);
 z-index:-1;
 }
 
-.hero h1{
+.hero-content h1{
 font-size:64px;
-letter-spacing:4px;
-background:linear-gradient(90deg,#0f172a,#2b1a4a);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+margin-bottom:20px;
 }
 
-.hero p{margin-top:20px;font-size:20px;max-width:700px;margin-left:auto;margin-right:auto;}
+.hero-content p{
+max-width:600px;
+margin:auto;
+opacity:0.9;
+}
 
-.btn{
-margin-top:35px;
+.cta{
+margin-top:30px;
 display:inline-block;
-padding:14px 40px;
-background:linear-gradient(90deg,#0f172a,#2b1a4a);
-color:white;
+padding:14px 30px;
+background:#7c3aed;
+border-radius:8px;
 text-decoration:none;
-border-radius:6px;
+color:white;
+font-weight:bold;
 }
 
-/* PACKS */
+/* PACKAGES */
 
-.packs{
-padding:120px 10%;
-text-align:center;
-}
-
-.packs h2{font-size:42px;margin-bottom:60px;}
-
-.pack-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.pack{
-background:#0b1120;
-padding:40px;
-border-radius:16px;
-border:1px solid #1f2937;
-}
-
-.pack h3{font-size:26px;margin-bottom:15px;}
-.price{font-size:32px;margin:20px 0;}
-.pack ul{list-style:none;text-align:left;margin-top:20px;}
-.pack ul li{margin-bottom:10px;}
-
-/* FORM */
-
-.contact{
-padding:120px 10%;
+.packages{
+padding:100px 60px;
 background:#020617;
 text-align:center;
 }
 
+.cards{
+margin-top:50px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:#0f172a;
+padding:30px;
+border-radius:14px;
+}
+
+.price{
+font-size:32px;
+margin:15px 0;
+color:#a78bfa;
+}
+
+/* CONTACT FORM */
+
+.contact{
+padding:100px 20px;
+text-align:center;
+}
+
 form{
-max-width:650px;
+max-width:600px;
 margin:auto;
 display:flex;
 flex-direction:column;
 gap:15px;
 }
 
-input,select,textarea{
+input,textarea{
 padding:14px;
-border-radius:8px;
 border:none;
-background:#0b1120;
+border-radius:8px;
+background:#020617;
 color:white;
 }
 
-textarea{height:120px;resize:none;}
-
 button{
-padding:14px;
+padding:15px;
+background:#7c3aed;
+color:white;
 border:none;
 border-radius:8px;
-background:linear-gradient(90deg,#0f172a,#2b1a4a);
-color:white;
 font-size:16px;
 cursor:pointer;
 }
@@ -160,8 +166,8 @@ cursor:pointer;
 
 .whatsapp{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:25px;
+right:25px;
 background:#25D366;
 width:60px;
 height:60px;
@@ -169,111 +175,90 @@ border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:30px;
 color:white;
+font-size:30px;
 text-decoration:none;
-z-index:9999;
+z-index:20;
 }
-
-footer{padding:30px;text-align:center;background:black;color:#777;}
 
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-<div class="logo">XAU STUDIO</div>
-<ul>
-<li><a href="#packs">Packages</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-<video autoplay muted loop playsinline class="bg-video">
-<source src="https://cdn.coverr.co/videos/coverr-programming-on-laptop-1576/1080p.mp4" type="video/mp4">
-</video>
+<img src="logo.png" class="logo">
 
 <div>
+<a href="#packages">Packages</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<video autoplay muted loop playsinline>
+<source src="coding.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="hero-content">
 <h1>XAU Studio Co.</h1>
 <p>Modern websites, branding and digital marketing solutions for growing businesses.</p>
-<a href="#contact" class="btn">Start a Project</a>
+<a href="#contact" class="cta">Start a Project</a>
 </div>
+
 </section>
 
-<!-- PACKS -->
-<section id="packs" class="packs">
+<section id="packages" class="packages">
 <h2>Our Packages</h2>
 
-<div class="pack-grid">
+<div class="cards">
 
-<div class="pack">
+<div class="card">
 <h3>Starter</h3>
-<div class="price">$199</div>
-<ul>
-<li>Logo Design</li>
-<li>1 Page Website</li>
-<li>Mobile Optimized</li>
-<li>Basic SEO</li>
-</ul>
+<p class="price">$199</p>
+<p>Landing Page Website</p>
+<p>Basic Branding</p>
+<p>1 Week Delivery</p>
 </div>
 
-<div class="pack">
-<h3>Growth</h3>
-<div class="price">$399</div>
-<ul>
-<li>5 Page Website</li>
-<li>Brand Colors</li>
-<li>Google Setup</li>
-<li>Contact Forms</li>
-</ul>
+<div class="card">
+<h3>Business</h3>
+<p class="price">$399</p>
+<p>Multi-page Website</p>
+<p>Brand Kit</p>
+<p>SEO Setup</p>
 </div>
 
-<div class="pack">
-<h3>Business Pro</h3>
-<div class="price">$699</div>
-<ul>
-<li>Full Website</li>
-<li>Lead Generation Setup</li>
-<li>Social Media Setup</li>
-<li>Priority Support</li>
-</ul>
+<div class="card">
+<h3>Pro</h3>
+<p class="price">$699</p>
+<p>Full Website + Automation</p>
+<p>Lead Forms</p>
+<p>Google Setup</p>
 </div>
 
 </div>
 </section>
 
-<!-- CONTACT FORM -->
 <section id="contact" class="contact">
 <h2>Start Your Project</h2>
 
-<form action="https://formspree.io/f/xayrgaad" method="POST">
-<input type="text" name="name" placeholder="Full Name" required>
+<form action="https://formspree.io/f/xrbpavqo" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Email Address" required>
-
-<select name="service">
-<option>Select Service</option>
-<option>Website</option>
-<option>Branding</option>
-<option>Marketing</option>
-<option>Logo</option>
-</select>
-
-<textarea name="message" placeholder="Tell us about your project..."></textarea>
+<input type="text" name="business" placeholder="Business Name">
+<textarea name="message" placeholder="Tell us about your project"></textarea>
 
 <button type="submit">Send Request</button>
+
 </form>
 </section>
 
-<!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/14012889597" target="_blank">💬</a>
-
-<footer>
-© 2026 XAU Studio Co. All Rights Reserved.
-</footer>
 
 </body>
 </html>
