@@ -9,383 +9,803 @@
 
 /* ===== RESET ===== */
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,system-ui,Arial;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,system-ui,Arial;
 }
 
 body{
-background:#07070c;
-color:white;
-overflow-x:hidden;
+  background:#07070c;
+  color:white;
+  overflow-x:hidden;
 }
 
 /* ===== NAVBAR ===== */
 
 header{
-position:fixed;
-top:0;
-width:100%;
-padding:18px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-background:linear-gradient(to bottom,rgba(0,0,0,.7),transparent);
-backdrop-filter:blur(6px);
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  background:linear-gradient(to bottom,rgba(0,0,0,.7),transparent);
+  backdrop-filter:blur(6px);
 }
 
 header img{
-height:36px;
+  height:32px;
 }
 
 nav a{
-color:#d7d7ff;
-margin-left:30px;
-text-decoration:none;
-font-size:14px;
-transition:.25s;
+  color:#d7d7ff;
+  margin-left:30px;
+  text-decoration:none;
+  font-size:14px;
+  transition:.25s;
 }
 
 nav a:hover{
-color:white;
+  color:white;
 }
 
 /* ===== HERO ===== */
 
 .hero{
-position:relative;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-overflow:hidden;
+  position:relative;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
 }
 
 .hero video{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-min-width:100%;
-min-height:100%;
-object-fit:cover;
-filter:blur(2px) brightness(.4);
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  filter:blur(2px) brightness(.4);
 }
 
 .hero::after{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
-radial-gradient(circle at 20% 80%,rgba(84,0,255,.35),transparent 40%);
-z-index:1;
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:
+    radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
+    radial-gradient(circle at 20% 80%,rgba(84,0,255,.35),transparent 40%);
+  z-index:1;
 }
 
 .hero-content{
-position:relative;
-z-index:2;
-max-width:900px;
-padding:20px;
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  padding:20px;
 }
 
 .hero-logo{
-height:140px;
-margin-bottom:25px;
-opacity:.95;
+  height:100px;
+  margin-bottom:25px;
+  opacity:.95;
 }
 
 .hero h1{
-font-size:58px;
-font-weight:700;
-letter-spacing:.5px;
-margin-bottom:18px;
+  font-size:58px;
+  font-weight:700;
+  letter-spacing:.5px;
+  margin-bottom:18px;
 }
 
 .hero p{
-color:#c7c7da;
-font-size:18px;
-margin-bottom:30px;
-line-height:1.6;
+  color:#c7c7da;
+  font-size:18px;
+  margin-bottom:30px;
+  line-height:1.6;
 }
 
 .btn{
-display:inline-block;
-padding:14px 34px;
-border-radius:12px;
-background:linear-gradient(135deg,#7a5cff,#a855f7);
-color:white;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
+  display:inline-block;
+  padding:14px 34px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#7a5cff,#a855f7);
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
 }
 
 .btn:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 30px rgba(123,92,255,.35);
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(123,92,255,.35);
 }
 
 /* ===== STATS ===== */
 
 .stats{
-padding:130px 40px;
-text-align:center;
-background:linear-gradient(to bottom,#07070c,#0b0b14);
+  padding:130px 40px;
+  text-align:center;
+  background:linear-gradient(to bottom,#07070c,#0b0b14);
 }
 
 .stats h2{
-font-size:42px;
-margin-bottom:20px;
-background:linear-gradient(90deg,#a88bff,#7a5cff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+  font-size:42px;
+  margin-bottom:20px;
+  background:linear-gradient(90deg,#a88bff,#7a5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .stats p{
-max-width:760px;
-margin:0 auto 70px;
-color:#bdbddd;
-line-height:1.7;
+  max-width:760px;
+  margin:0 auto 70px;
+  color:#bdbddd;
+  line-height:1.7;
 }
 
 .stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-max-width:1100px;
-margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .stat-card{
-padding:40px 25px;
-border-radius:18px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(140,120,255,.18);
-backdrop-filter:blur(10px);
-transition:.4s;
-opacity:0;
-transform:translateY(40px);
+  padding:40px 25px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(140,120,255,.18);
+  backdrop-filter:blur(10px);
+  transition:.4s;
+  opacity:0;
+  transform:translateY(40px);
 }
 
 .stat-card.show{
-opacity:1;
-transform:translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
 .stat-number{
-font-size:52px;
-font-weight:700;
-color:#a88bff;
-margin-bottom:10px;
+  font-size:52px;
+  font-weight:700;
+  color:#a88bff;
+  margin-bottom:10px;
 }
 
 .stat-label{
-color:#cfcff0;
+  color:#cfcff0;
 }
 
 /* ===== WHY CHOOSE ===== */
 
 .features{
-padding:120px 40px;
-text-align:center;
+  padding:120px 40px;
+  text-align:center;
 }
 
 .features-intro{
-max-width:850px;
-margin:0 auto 60px;
-color:#cfcff0;
-line-height:1.8;
-font-size:17px;
+  max-width:850px;
+  margin:0 auto 60px;
+  color:#cfcff0;
+  line-height:1.8;
+  font-size:17px;
 }
 
 .features h2{
-font-size:40px;
-margin-bottom:30px;
-background:linear-gradient(90deg,#a88bff,#7a5cff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+  font-size:40px;
+  margin-bottom:30px;
+  background:linear-gradient(90deg,#a88bff,#7a5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .features-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:35px;
-max-width:1100px;
-margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:35px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .feature{
-padding:35px;
-border-radius:18px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(140,120,255,.15);
-transition:.35s;
+  padding:35px;
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,120,255,.15);
+  transition:.35s;
 }
 
 .feature:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 40px rgba(120,90,255,.18);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(120,90,255,.18);
 }
 
 .feature h3{
-margin-bottom:12px;
-color:#a88bff;
+  margin-bottom:12px;
+  color:#a88bff;
 }
 
 .feature p{
-color:#cfcff0;
-line-height:1.6;
+  color:#cfcff0;
+  line-height:1.6;
 }
 
-/* ===== FEATURED PROJECT FIX ===== */
+/* ===== FEATURED PROJECT ===== */
 
 .project{
-padding:140px 40px;
-background:linear-gradient(to bottom,#0b0b14,#07070c);
+  padding:140px 40px;
+  background:linear-gradient(to bottom,#0b0b14,#07070c);
 }
 
 .project-container{
-display:grid;
-grid-template-columns:1fr 1.3fr;
-gap:60px;
-max-width:1300px;
-margin:auto;
-align-items:center;
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:60px;
+  max-width:1300px;
+  margin:auto;
+  align-items:center;
 }
 
+.project-left h2{
+  font-size:42px;
+  margin-bottom:10px;
+  background:linear-gradient(90deg,#a88bff,#7a5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.project-left h3{
+  font-size:26px;
+  margin-bottom:18px;
+  color:#e7e7ff;
+}
+
+.project-left p{
+  color:#cfcff0;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.project-list{
+  margin-bottom:30px;
+}
+
+.project-list li{
+  color:#cfcff0;
+  margin-bottom:8px;
+}
+
+/* === FIX: Better featured preview (clean rectangle, shows more of site) === */
 .project-right{
-position:relative;
-overflow:hidden;
-border-radius:18px;
+  position:relative;
 }
 
-.project-right iframe{
-width:128%;
-height:128%;
-border-radius:18px;
-border:1px solid rgba(140,120,255,.25);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
-background:black;
-transform:scale(.78);
-transform-origin:top left;
-pointer-events:none;
+.project-preview{
+  width:100%;
+  height:520px;
+  border-radius:18px;
+  border:1px solid rgba(140,120,255,.25);
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  background:rgba(0,0,0,.55);
+  overflow:hidden;
+  position:relative;
+}
+
+.project-preview::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(138,79,255,.22), transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(84,0,255,.18), transparent 45%);
+  pointer-events:none;
+  z-index:1;
+}
+
+.project-preview iframe{
+  position:absolute;
+  inset:0;
+  width:153%;
+  height:153%;
+  border:0;
+  background:black;
+  transform-origin:0 0;
+  transform:scale(.65);
+  z-index:2;
+  filter:saturate(1.05) contrast(1.02) brightness(.98);
+}
+
+.project-preview-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(10,10,16,.55);
+  border:1px solid rgba(140,120,255,.22);
+  backdrop-filter:blur(10px);
+  color:#eaeaff;
+  font-size:13px;
+}
+
+.project-preview-badge .dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#7a5cff;
+  box-shadow:0 0 18px rgba(122,92,255,.9);
+}
+
+.project-preview-hint{
+  position:absolute;
+  bottom:14px;
+  right:14px;
+  z-index:3;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(10,10,16,.55);
+  border:1px solid rgba(140,120,255,.18);
+  backdrop-filter:blur(10px);
+  color:#cfcff0;
+  font-size:12px;
 }
 
 /* ===== PROCESS ===== */
 
 .process{
-padding:160px 40px;
-text-align:center;
-background:linear-gradient(to bottom,#0a0915,#05050a);
+  padding:140px 40px;
+  text-align:center;
+  background:linear-gradient(to bottom,#0a0915,#05050a);
 }
 
 .process h2{
-font-size:40px;
-margin-bottom:30px;
-background:linear-gradient(90deg,#a88bff,#7a5cff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.process-intro{
-max-width:820px;
-margin:0 auto 80px;
-color:#cfcff0;
-line-height:1.8;
-font-size:17px;
+  font-size:40px;
+  margin-bottom:80px;
+  background:linear-gradient(90deg,#a88bff,#7a5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .timeline{
-max-width:820px;
-margin:auto;
-text-align:left;
-border-left:2px solid rgba(140,120,255,.35);
-padding-left:40px;
+  max-width:820px;
+  margin:auto;
+  text-align:left;
+  border-left:2px solid rgba(140,120,255,.35);
+  padding-left:40px;
 }
 
 .step{
-margin-bottom:70px;
-position:relative;
-opacity:0;
-transform:translateY(40px);
-transition:.9s;
-}
-
-.step.show{
-opacity:1;
-transform:translateY(0);
+  margin-bottom:60px;
+  position:relative;
 }
 
 .step::before{
-content:"";
-position:absolute;
-left:-50px;
-top:5px;
-width:18px;
-height:18px;
-border-radius:50%;
-background:#a88bff;
-box-shadow:0 0 18px #7a5cff,0 0 35px rgba(122,92,255,.6);
-animation:pulse 2.2s infinite;
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 10px #7a5cff;}
-50%{box-shadow:0 0 28px #7a5cff;}
-100%{box-shadow:0 0 10px #7a5cff;}
+  content:"";
+  position:absolute;
+  left:-50px;
+  top:5px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#a88bff;
+  box-shadow:0 0 20px #7a5cff;
 }
 
 .step h4{
-color:#a88bff;
-margin-bottom:6px;
-font-size:20px;
+  color:#a88bff;
+  margin-bottom:6px;
+  font-size:20px;
 }
 
 .step p{
-color:#cfcff0;
-line-height:1.7;
+  color:#cfcff0;
+  line-height:1.7;
+}
+
+/* ===== NEW: Process Enhancements (more pro, not basic) ===== */
+.process-sub{
+  max-width:880px;
+  margin:0 auto 50px;
+  color:#cfcff0;
+  line-height:1.8;
+  font-size:16px;
+  opacity:.95;
+}
+
+.process-grid{
+  max-width:980px;
+  margin:0 auto 70px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+
+.process-card{
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,120,255,.14);
+  backdrop-filter:blur(10px);
+  padding:18px 18px;
+  text-align:left;
+  transition:.35s;
+}
+
+.process-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 45px rgba(120,90,255,.16);
+}
+
+.process-card h3{
+  font-size:14px;
+  color:#e7e7ff;
+  margin-bottom:8px;
+  letter-spacing:.2px;
+}
+
+.process-card p{
+  color:#cfcff0;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* ===== NEW: Trust Strip + Who/Tech ===== */
+.trust-strip{
+  padding:64px 40px;
+  background:linear-gradient(to bottom,#05050a,#07070c);
+}
+
+.trust-inner{
+  max-width:1200px;
+  margin:0 auto;
+  border-radius:22px;
+  border:1px solid rgba(140,120,255,.18);
+  background:
+    radial-gradient(circle at 20% 50%, rgba(122,92,255,.18), transparent 55%),
+    radial-gradient(circle at 80% 50%, rgba(168,85,247,.14), transparent 55%),
+    rgba(255,255,255,.02);
+  backdrop-filter:blur(12px);
+  padding:22px 22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+}
+
+.trust-pill{
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(140,120,255,.14);
+  color:#dedeff;
+  font-size:13px;
+}
+
+.stack{
+  padding:120px 40px;
+  background:linear-gradient(to bottom,#07070c,#0b0b14);
+}
+
+.stack h2{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:18px;
+  background:linear-gradient(90deg,#a88bff,#7a5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.stack p{
+  text-align:center;
+  max-width:880px;
+  margin:0 auto 60px;
+  color:#cfcff0;
+  line-height:1.8;
+}
+
+.stack-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.stack-card{
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,120,255,.15);
+  backdrop-filter:blur(10px);
+  padding:22px;
+  transition:.35s;
+}
+
+.stack-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 45px rgba(120,90,255,.16);
+}
+
+.stack-card h3{
+  color:#a88bff;
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.stack-card ul{
+  list-style:none;
+  padding-left:0;
+}
+
+.stack-card li{
+  color:#cfcff0;
+  line-height:1.8;
+  font-size:14px;
+  padding:4px 0;
+}
+
+.stack-card li::before{
+  content:"•";
+  color:#a88bff;
+  margin-right:10px;
+}
+
+/* ===== NEW: FAQ (purple gradient, pro accordion, animated) ===== */
+.faq{
+  padding:140px 40px;
+  background:linear-gradient(to bottom,#0b0b14,#07070c);
+  position:relative;
+  overflow:hidden;
+}
+
+.faq::before{
+  content:"";
+  position:absolute;
+  inset:-120px -120px -120px -120px;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(138,79,255,.22), transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(84,0,255,.18), transparent 45%);
+  pointer-events:none;
+}
+
+.faq-inner{
+  position:relative;
+  max-width:1050px;
+  margin:0 auto;
+}
+
+.faq h2{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:18px;
+  background:linear-gradient(90deg,#a88bff,#7a5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.faq p.lead{
+  text-align:center;
+  max-width:860px;
+  margin:0 auto 60px;
+  color:#cfcff0;
+  line-height:1.8;
+}
+
+.faq-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.faq-item{
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,120,255,.15);
+  backdrop-filter:blur(10px);
+  overflow:hidden;
+  transition:.35s;
+}
+
+.faq-item:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 45px rgba(120,90,255,.14);
+}
+
+.faq-q{
+  width:100%;
+  text-align:left;
+  padding:18px 18px;
+  border:0;
+  outline:none;
+  background:transparent;
+  color:#e7e7ff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  font-size:15px;
+  font-weight:600;
+}
+
+.faq-q span{
+  display:block;
+  line-height:1.4;
+}
+
+.faq-icon{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(140,120,255,.16);
+  color:#a88bff;
+  flex:0 0 auto;
+  transition:.35s;
+}
+
+.faq-item.open .faq-icon{
+  transform:rotate(45deg);
+  box-shadow:0 0 18px rgba(122,92,255,.35);
+}
+
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .45s ease;
+}
+
+.faq-a-inner{
+  padding:0 18px 18px 18px;
+  color:#cfcff0;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.faq-note{
+  margin-top:26px;
+  text-align:center;
+  color:#bdbddd;
+  font-size:13px;
 }
 
 /* ===== CONTACT ===== */
 
 .contact{
-padding:130px 40px;
-text-align:center;
-background:linear-gradient(to top,#07070c,#0b0b14);
+  padding:130px 40px;
+  text-align:center;
+  background:linear-gradient(to top,#07070c,#0b0b14);
 }
 
 .contact h2{
-font-size:42px;
-margin-bottom:20px;
+  font-size:42px;
+  margin-bottom:20px;
 }
 
 .contact p{
-color:#cfcff0;
-margin-bottom:35px;
+  color:#cfcff0;
+  margin-bottom:35px;
 }
 
 /* ===== WHATSAPP ===== */
 
 .whatsapp{
-position:fixed;
-bottom:22px;
-right:22px;
-width:58px;
-height:58px;
-border-radius:50%;
-background:#25D366;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-font-size:26px;
-box-shadow:0 10px 25px rgba(0,0,0,.5);
-z-index:999;
-cursor:pointer;
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:26px;
+  box-shadow:0 10px 25px rgba(0,0,0,.5);
+  z-index:999;
+  cursor:pointer;
+}
+
+/* ===== NEW: Global reveal animations ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal-left{
+  opacity:0;
+  transform:translateX(-22px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.reveal-left.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(22px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.reveal-right.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:980px){
+  header{
+    padding:16px 22px;
+  }
+  nav a{
+    margin-left:18px;
+  }
+  .hero h1{
+    font-size:44px;
+  }
+  .project-container{
+    grid-template-columns:1fr;
+  }
+  .project-preview{
+    height:520px;
+  }
+  .project-preview iframe{
+    width:170%;
+    height:170%;
+    transform:scale(.58);
+  }
+  .faq-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:520px){
+  .hero-logo{
+    height:92px;
+  }
+  .stats{
+    padding:110px 18px;
+  }
+  .features,
+  .project,
+  .process,
+  .stack,
+  .faq,
+  .contact{
+    padding-left:18px;
+    padding-right:18px;
+  }
+  .project-preview{
+    height:460px;
+  }
+  .project-preview iframe{
+    width:190%;
+    height:190%;
+    transform:scale(.53);
+  }
 }
 
 </style>
@@ -416,8 +836,8 @@ cursor:pointer;
 </section>
 
 <section class="stats" id="about">
-<h2>We build real business websites</h2>
-<p>Not templates. Not page builders. We engineer real business websites using structured code, performance optimization and conversion psychology.</p>
+<h2 class="reveal">We build real business websites</h2>
+<p class="reveal">Not templates. Not page builders. We engineer real business websites using structured code, performance optimization and conversion psychology.</p>
 
 <div class="stats-grid">
 <div class="stat-card"><div class="stat-number" data-target="6">0</div><div class="stat-label">Years Experience</div></div>
@@ -428,24 +848,24 @@ cursor:pointer;
 </section>
 
 <section class="features">
-<h2>Why choose XAU Studio</h2>
+<h2 class="reveal">Why choose XAU Studio</h2>
 
-<div class="features-intro">
-We don’t build websites — we build online business systems. Every project is engineered for speed, SEO visibility and client conversion. Our goal is to help real companies generate consistent leads and grow long-term. Our development approach focuses on measurable results, not just design aesthetics.
+<div class="features-intro reveal">
+We don’t build websites — we build online business systems. Every project is engineered for speed, SEO visibility and client conversion. Our goal is to help real companies generate consistent leads and grow long-term.
 </div>
 
 <div class="features-grid">
-<div class="feature"><h3>Custom Coding</h3><p>We build everything from scratch. Faster websites and better Google ranking.</p></div>
-<div class="feature"><h3>SEO Structure</h3><p>Your website is optimized technically so Google understands your business and ranks locally.</p></div>
-<div class="feature"><h3>Conversion Focused</h3><p>Designed to generate calls, forms and real customers.</p></div>
-<div class="feature"><h3>Business Support</h3><p>We guide you after launch with strategy and growth planning.</p></div>
+<div class="feature reveal"><h3>Custom Coding</h3><p>We build everything from scratch. Faster websites and better Google ranking.</p></div>
+<div class="feature reveal"><h3>SEO Structure</h3><p>Your website is optimized technically so Google understands your business and ranks locally.</p></div>
+<div class="feature reveal"><h3>Conversion Focused</h3><p>Designed to generate calls, forms and real customers.</p></div>
+<div class="feature reveal"><h3>Business Support</h3><p>We guide you after launch with strategy and growth planning.</p></div>
 </div>
 </section>
 
 <section class="project">
 <div class="project-container">
 
-<div class="project-left">
+<div class="project-left reveal-left">
 <h2>Featured Project</h2>
 <h3>LizMar Construction LLC</h3>
 
@@ -465,70 +885,291 @@ We don’t build websites — we build online business systems. Every project is
 <a href="https://lizmarconstructionllc.com" target="_blank" class="btn">Visit Live Website</a>
 </div>
 
-<div class="project-right">
-<iframe src="https://lizmarconstructionllc.com"></iframe>
+<div class="project-right reveal-right">
+  <div class="project-preview">
+    <div class="project-preview-badge"><span class="dot"></span> Live Preview</div>
+    <div class="project-preview-hint">Scroll inside preview</div>
+    <iframe src="https://lizmarconstructionllc.com" loading="lazy"></iframe>
+  </div>
 </div>
 
 </div>
+</section>
+
+<!-- NEW: Trust strip -->
+<section class="trust-strip">
+  <div class="trust-inner reveal">
+    <div class="trust-pill">Structured Code</div>
+    <div class="trust-pill">SEO Foundations</div>
+    <div class="trust-pill">Fast Load Speed</div>
+    <div class="trust-pill">Conversion Layout</div>
+    <div class="trust-pill">Lead Systems</div>
+    <div class="trust-pill">Modern UI/UX</div>
+    <div class="trust-pill">Scalable</div>
+    <div class="trust-pill">Launch Support</div>
+  </div>
+</section>
+
+<!-- NEW: Who we work with + Tech -->
+<section class="stack">
+  <h2 class="reveal">Built for growth</h2>
+  <p class="reveal">
+    We work with real businesses that need more than a “pretty website.” We build systems that explain your services clearly, earn trust fast, and turn visitors into leads.
+  </p>
+
+  <div class="stack-grid">
+    <div class="stack-card reveal">
+      <h3>Who we work with</h3>
+      <ul>
+        <li>Contractors & service businesses</li>
+        <li>Local companies that need leads</li>
+        <li>Entrepreneurs & growing brands</li>
+        <li>Businesses upgrading from old sites</li>
+      </ul>
+    </div>
+
+    <div class="stack-card reveal">
+      <h3>What we build</h3>
+      <ul>
+        <li>Custom business websites</li>
+        <li>Landing pages that convert</li>
+        <li>Service pages & SEO structure</li>
+        <li>Contact forms & lead routing</li>
+      </ul>
+    </div>
+
+    <div class="stack-card reveal">
+      <h3>How we build it</h3>
+      <ul>
+        <li>Clean HTML / CSS / JS (custom-coded)</li>
+        <li>Performance + speed optimization</li>
+        <li>SEO-ready structure for Google</li>
+        <li>Modern UI / UX that feels premium</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section class="process" id="process">
-<h2>Our Process</h2>
+<h2 class="reveal">Our Process</h2>
 
-<div class="process-intro">
-Every website we develop follows a structured system designed to turn visitors into customers. We analyze your business, build a strategy, structure content and optimize performance so your website actually generates leads and revenue.
+<div class="process-sub reveal">
+Every project follows a clear strategy so your website doesn’t just “exist” — it performs. We plan structure, write clean code, optimize speed, and build a layout designed to convert visitors into real clients.
+</div>
+
+<div class="process-grid">
+  <div class="process-card reveal">
+    <h3>Clarity first</h3>
+    <p>We define your services, ideal customers, and the exact goal of every section—so your site communicates clearly.</p>
+  </div>
+  <div class="process-card reveal">
+    <h3>Structure + SEO</h3>
+    <p>We build pages with proper headings, content hierarchy, and technical structure so Google can understand your business.</p>
+  </div>
+  <div class="process-card reveal">
+    <h3>Conversion layout</h3>
+    <p>Every button, section, and message is placed with intent—focused on calls, forms, and lead generation.</p>
+  </div>
+  <div class="process-card reveal">
+    <h3>Launch support</h3>
+    <p>We don’t disappear after delivery. We guide improvements and help you evolve the site as your business grows.</p>
+  </div>
 </div>
 
 <div class="timeline">
-<div class="step"><h4>1. Consultation</h4><p>We learn your business, competitors and goals.</p></div>
-<div class="step"><h4>2. Strategy & Design</h4><p>We create a high-converting layout based on real user behavior.</p></div>
-<div class="step"><h4>3. Development</h4><p>We code, optimize speed and implement SEO structure.</p></div>
-<div class="step"><h4>4. Launch</h4><p>Your business goes live and starts getting clients.</p></div>
+<div class="step reveal"><h4>1. Consultation</h4><p>We learn your business, competitors and goals.</p></div>
+<div class="step reveal"><h4>2. Strategy & Design</h4><p>We create a high-converting layout.</p></div>
+<div class="step reveal"><h4>3. Development</h4><p>We code, optimize speed and implement SEO structure.</p></div>
+<div class="step reveal"><h4>4. Launch</h4><p>Your business goes live and starts getting clients.</p></div>
 </div>
 </section>
 
+<!-- NEW: FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <h2 class="reveal">FAQ</h2>
+    <p class="lead reveal">
+      Quick answers to the questions we get the most — so you understand exactly how we work, what you receive, and what to expect from start to launch.
+    </p>
+
+    <div class="faq-grid">
+
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">
+          <span>How long does a website project take?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Most projects take <b>2–4 weeks</b> depending on scope, content and features. We move fast because we use a clear structure: strategy → design → development → launch.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">
+          <span>Do you use templates or page builders?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. We build using <b>real custom-coded structure</b> so your website loads faster, looks premium, and can scale long-term without limitations.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">
+          <span>Will my website show up on Google?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            We implement strong <b>SEO foundations</b> (structure, headings, internal layout, technical clarity). Ranking depends on competition and consistency, but your site will be built the right way from day one.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">
+          <span>Do you offer support after the website is live?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. We provide post-launch guidance and can help with updates, improvements, SEO expansion, and new sections as your business grows.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">
+          <span>What do you need from me to start?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            A short call (or demo), your services list, business info, and any photos/logos you want included. If you don’t have content, we can guide you with a simple checklist.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">
+          <span>How do you price projects?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Pricing depends on pages, features, and complexity. We keep it clear: you’ll know exactly what’s included before we start — no surprises.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq-note reveal">
+      Still have questions? Use WhatsApp below or schedule a demo — we respond fast.
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
-<h2>Start your project</h2>
-<p>Schedule a demo and see how your future website will work.</p>
+<h2 class="reveal">Start your project</h2>
+<p class="reveal">Schedule a demo and see how your future website will work.</p>
 <a href="https://calendly.com/" class="btn">Schedule a Demo</a>
 </section>
 
 <div class="whatsapp" onclick="window.open('https://wa.me/14012889597')">💬</div>
 
 <script>
+/* ========= STATS COUNTER + APPEAR ========= */
+const cards = document.querySelectorAll('.stat-card');
 
-/* STATS COUNTER */
-const cards=document.querySelectorAll('.stat-card');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
-let num=entry.target.querySelector('.stat-number');
-let target=+num.getAttribute('data-target');
-let count=0;
-let speed=45;
-let update=setInterval(()=>{
-count++;
-num.innerText=count+"+";
-if(count>=target) clearInterval(update);
-},speed);
-observer.unobserve(entry.target);
-}
-});
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+
+      let num = entry.target.querySelector('.stat-number');
+      let target = +num.getAttribute('data-target');
+
+      let count = 0;
+
+      /* keep it smooth & not too fast */
+      let speed = 45;
+
+      let update = setInterval(()=>{
+        count++;
+        num.innerText = count + "+";
+        if(count >= target) clearInterval(update);
+      }, speed);
+
+      observer.unobserve(entry.target);
+    }
+  });
 },{threshold:.5});
+
 cards.forEach(card=>observer.observe(card));
 
-/* PROCESS ANIMATION */
-const steps=document.querySelectorAll('.step');
-const stepObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
-}
-});
-},{threshold:.35});
-steps.forEach(step=>stepObserver.observe(step));
+/* ========= GLOBAL REVEAL ANIMATIONS ========= */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
+const revealObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:.15});
+
+revealEls.forEach(el=>revealObserver.observe(el));
+
+/* ========= FAQ ACCORDION ========= */
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item=>{
+  const btn = item.querySelector('.faq-q');
+  const panel = item.querySelector('.faq-a');
+
+  btn.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+
+    /* close others for clean UX */
+    faqItems.forEach(i=>{
+      i.classList.remove('open');
+      const p = i.querySelector('.faq-a');
+      p.style.maxHeight = 0;
+    });
+
+    if(!isOpen){
+      item.classList.add('open');
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});
+
+/* ========= Keep iframe preview feeling nicer ========= */
+/* (Optional) re-set height based on device for best preview crop */
+(function(){
+  const preview = document.querySelector('.project-preview');
+  if(!preview) return;
+
+  const setPreview = ()=>{
+    const w = preview.clientWidth;
+    if(w < 520){
+      preview.style.height = "460px";
+    }else if(w < 980){
+      preview.style.height = "520px";
+    }else{
+      preview.style.height = "520px";
+    }
+  };
+
+  setPreview();
+  window.addEventListener('resize', setPreview);
+})();
 </script>
 
 </body>
