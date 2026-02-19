@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>XAU Studio Co.</title>
 
 <style>
@@ -81,8 +80,7 @@ content:"";
 position:absolute;
 width:100%;
 height:100%;
-background:
-radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
+background:radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
 radial-gradient(circle at 20% 80%,rgba(84,0,255,.35),transparent 40%);
 z-index:1;
 }
@@ -94,7 +92,6 @@ max-width:900px;
 padding:20px;
 }
 
-/* BIGGER LOGO */
 .hero-logo{
 height:100px;
 margin-bottom:25px;
@@ -243,6 +240,60 @@ color:#cfcff0;
 line-height:1.6;
 }
 
+/* ===== FEATURED PROJECT ===== */
+
+.project{
+padding:140px 40px;
+background:linear-gradient(to bottom,#0b0b14,#07070c);
+}
+
+.project-container{
+display:grid;
+grid-template-columns:1fr 1.3fr;
+gap:60px;
+max-width:1300px;
+margin:auto;
+align-items:center;
+}
+
+.project-left h2{
+font-size:42px;
+margin-bottom:10px;
+background:linear-gradient(90deg,#a88bff,#7a5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.project-left h3{
+font-size:26px;
+margin-bottom:18px;
+color:#e7e7ff;
+}
+
+.project-left p{
+color:#cfcff0;
+line-height:1.7;
+margin-bottom:18px;
+}
+
+.project-list{
+margin-bottom:30px;
+}
+
+.project-list li{
+color:#cfcff0;
+margin-bottom:8px;
+}
+
+.project-right iframe{
+width:100%;
+height:600px;
+border-radius:18px;
+border:1px solid rgba(140,120,255,.25);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+background:black;
+}
+
 /* ===== PROCESS ===== */
 
 .process{
@@ -384,6 +435,36 @@ We don’t build websites — we build online business systems. Every project is
 <div class="feature"><h3>SEO Structure</h3><p>Your website is optimized technically so Google understands your business and ranks locally.</p></div>
 <div class="feature"><h3>Conversion Focused</h3><p>Designed to generate calls, forms and real customers.</p></div>
 <div class="feature"><h3>Business Support</h3><p>We guide you after launch with strategy and growth planning.</p></div>
+</div>
+</section>
+
+<section class="project">
+<div class="project-container">
+
+<div class="project-left">
+<h2>Featured Project</h2>
+<h3>LizMar Construction LLC</h3>
+
+<p>LizMar Construction is a real roofing and exterior company based in Rhode Island. The business needed a professional online presence capable of generating leads, building trust and clearly explaining their services to homeowners.</p>
+
+<p>The entire website was designed and developed from scratch including layout, structure, service pages, lead systems and local SEO optimization. Every section was built around customer experience and conversion.</p>
+
+<ul class="project-list">
+<li>Custom coded website</li>
+<li>Lead generation contact forms</li>
+<li>Mobile responsive layout</li>
+<li>Local SEO structure</li>
+<li>Service explanation pages</li>
+<li>Trust & certification sections</li>
+</ul>
+
+<a href="https://lizmarconstructionllc.com" target="_blank" class="btn">Visit Live Website</a>
+</div>
+
+<div class="project-right">
+<iframe src="https://lizmarconstructionllc.com"></iframe>
+</div>
+
 </div>
 </section>
 
