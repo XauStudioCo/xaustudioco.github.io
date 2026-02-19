@@ -37,7 +37,7 @@ backdrop-filter:blur(6px);
 }
 
 header img{
-height:32px;
+height:36px;
 }
 
 nav a{
@@ -80,7 +80,8 @@ content:"";
 position:absolute;
 width:100%;
 height:100%;
-background:radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
+background:
+radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
 radial-gradient(circle at 20% 80%,rgba(84,0,255,.35),transparent 40%);
 z-index:1;
 }
@@ -93,7 +94,7 @@ padding:20px;
 }
 
 .hero-logo{
-height:100px;
+height:140px;
 margin-bottom:25px;
 opacity:.95;
 }
@@ -240,7 +241,7 @@ color:#cfcff0;
 line-height:1.6;
 }
 
-/* ===== FEATURED PROJECT ===== */
+/* ===== FEATURED PROJECT FIX ===== */
 
 .project{
 padding:140px 40px;
@@ -256,58 +257,46 @@ margin:auto;
 align-items:center;
 }
 
-.project-left h2{
-font-size:42px;
-margin-bottom:10px;
-background:linear-gradient(90deg,#a88bff,#7a5cff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.project-left h3{
-font-size:26px;
-margin-bottom:18px;
-color:#e7e7ff;
-}
-
-.project-left p{
-color:#cfcff0;
-line-height:1.7;
-margin-bottom:18px;
-}
-
-.project-list{
-margin-bottom:30px;
-}
-
-.project-list li{
-color:#cfcff0;
-margin-bottom:8px;
+.project-right{
+position:relative;
+overflow:hidden;
+border-radius:18px;
 }
 
 .project-right iframe{
-width:100%;
-height:600px;
+width:128%;
+height:128%;
 border-radius:18px;
 border:1px solid rgba(140,120,255,.25);
 box-shadow:0 20px 60px rgba(0,0,0,.6);
 background:black;
+transform:scale(.78);
+transform-origin:top left;
+pointer-events:none;
 }
 
 /* ===== PROCESS ===== */
 
 .process{
-padding:140px 40px;
+padding:160px 40px;
 text-align:center;
 background:linear-gradient(to bottom,#0a0915,#05050a);
 }
 
 .process h2{
 font-size:40px;
-margin-bottom:80px;
+margin-bottom:30px;
 background:linear-gradient(90deg,#a88bff,#7a5cff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+}
+
+.process-intro{
+max-width:820px;
+margin:0 auto 80px;
+color:#cfcff0;
+line-height:1.8;
+font-size:17px;
 }
 
 .timeline{
@@ -319,8 +308,16 @@ padding-left:40px;
 }
 
 .step{
-margin-bottom:60px;
+margin-bottom:70px;
 position:relative;
+opacity:0;
+transform:translateY(40px);
+transition:.9s;
+}
+
+.step.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .step::before{
@@ -332,7 +329,14 @@ width:18px;
 height:18px;
 border-radius:50%;
 background:#a88bff;
-box-shadow:0 0 20px #7a5cff;
+box-shadow:0 0 18px #7a5cff,0 0 35px rgba(122,92,255,.6);
+animation:pulse 2.2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 10px #7a5cff;}
+50%{box-shadow:0 0 28px #7a5cff;}
+100%{box-shadow:0 0 10px #7a5cff;}
 }
 
 .step h4{
@@ -427,7 +431,7 @@ cursor:pointer;
 <h2>Why choose XAU Studio</h2>
 
 <div class="features-intro">
-We don’t build websites — we build online business systems. Every project is engineered for speed, SEO visibility and client conversion. Our goal is to help real companies generate consistent leads and grow long-term.
+We don’t build websites — we build online business systems. Every project is engineered for speed, SEO visibility and client conversion. Our goal is to help real companies generate consistent leads and grow long-term. Our development approach focuses on measurable results, not just design aesthetics.
 </div>
 
 <div class="features-grid">
@@ -471,9 +475,13 @@ We don’t build websites — we build online business systems. Every project is
 <section class="process" id="process">
 <h2>Our Process</h2>
 
+<div class="process-intro">
+Every website we develop follows a structured system designed to turn visitors into customers. We analyze your business, build a strategy, structure content and optimize performance so your website actually generates leads and revenue.
+</div>
+
 <div class="timeline">
 <div class="step"><h4>1. Consultation</h4><p>We learn your business, competitors and goals.</p></div>
-<div class="step"><h4>2. Strategy & Design</h4><p>We create a high-converting layout.</p></div>
+<div class="step"><h4>2. Strategy & Design</h4><p>We create a high-converting layout based on real user behavior.</p></div>
 <div class="step"><h4>3. Development</h4><p>We code, optimize speed and implement SEO structure.</p></div>
 <div class="step"><h4>4. Launch</h4><p>Your business goes live and starts getting clients.</p></div>
 </div>
@@ -488,6 +496,8 @@ We don’t build websites — we build online business systems. Every project is
 <div class="whatsapp" onclick="window.open('https://wa.me/14012889597')">💬</div>
 
 <script>
+
+/* STATS COUNTER */
 const cards=document.querySelectorAll('.stat-card');
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -507,6 +517,18 @@ observer.unobserve(entry.target);
 });
 },{threshold:.5});
 cards.forEach(card=>observer.observe(card));
+
+/* PROCESS ANIMATION */
+const steps=document.querySelectorAll('.step');
+const stepObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+},{threshold:.35});
+steps.forEach(step=>stepObserver.observe(step));
+
 </script>
 
 </body>
