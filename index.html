@@ -924,7 +924,68 @@ nav a:hover{ color:white; }
   50%{ transform:translate3d(-2%,2%,0) scale(1.02); }
   100%{ transform:translate3d(0,0,0) scale(1); }
 }
+/* =========================================================
+   📱 MOBILE FIX — XAU STUDIO (VERY IMPORTANT)
+   This fixes the broken mobile layout
+   ========================================================= */
 
+@media (max-width: 900px){
+
+  /* Stack layout */
+  .featured-project{
+    grid-template-columns: 1fr !important;
+    gap:40px;
+  }
+
+  /* Text area */
+  .featured-text{
+    text-align:left;
+    padding:0 22px;
+  }
+
+  .featured-text h2{
+    font-size:42px !important;
+    line-height:1.15;
+  }
+
+  .featured-text h3{
+    font-size:26px !important;
+  }
+
+  .featured-text p{
+    font-size:17px;
+  }
+@media (max-width: 900px){
+   
+  /* Hide desktop preview */
+  .desktop-frame{
+    display:none !important;
+  }
+
+  /* Phone preview becomes main */
+  .phone-frame{
+    position:relative !important;
+    right:auto !important;
+    bottom:auto !important;
+    margin:0 auto;
+    width:280px;
+    height:560px;
+    transform:none !important;
+  }
+
+  .preview-dual{
+    display:block !important;
+    min-height:auto !important;
+    margin-top:30px;
+  }
+
+  /* Button fix */
+  .cta-button{
+    width:100%;
+    text-align:center;
+  }
+
+}
 </style>
 </head>
 
