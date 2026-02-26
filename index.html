@@ -458,12 +458,13 @@ nav a:hover{ color:white; }
 
 /* Right side layout: desktop + phone */
 .preview-dual{
-  position:relative;
-  width:100%;
-  min-height:560px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    position:relative;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
 }
 
 /* Desktop frame */
@@ -517,7 +518,10 @@ nav a:hover{ color:white; }
 }
 
 .desktop-viewport{
-    height:720px;
+    height:540px;
+    width:100%;
+    max-width:900px;
+    margin:auto;
     background:#000;
     overflow:hidden;
     position:relative;
@@ -533,17 +537,17 @@ nav a:hover{ color:white; }
 }
 
 .desktop-viewport iframe{
-    width:100%;
-    height:1100px;
+    width:1920px;
+    height:1080px;
     border:0;
-    display:block;
-    background:#000;
+    transform:scale(0.62);
+    transform-origin:top left;
+    pointer-events:none;
 }
 /* Phone frame overlay */
 .phone-frame{
-  position:absolute;
-  right:18px;
-  bottom:18px;
+    position:relative;
+    margin-top:30px;
   width:230px;
   height:470px;
   border-radius:34px;
@@ -625,8 +629,12 @@ nav a:hover{ color:white; }
     height:450px;
   }
   .phone-viewport iframe{
-    transform:scale(0.56);
-  }
+    width:390px;
+    height:844px;
+    border:0;
+    transform:scale(0.68);
+    transform-origin:top left;
+}
 }
 
 /* =================================================================================================
