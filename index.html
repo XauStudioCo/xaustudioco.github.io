@@ -1,8 +1,4 @@
-from pathlib import Path, PurePosixPath
-
-# Reconstruct the user's provided single-file HTML as faithfully as possible from the latest paste,
-# applying ONLY the Featured Project CSS upgrade and adding missing closing tags.
-html = r"""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1199,11 +1195,6 @@ window.addEventListener('load', ()=>{
 
 </body>
 </html>
-"""
-path = Path("/mnt/data/xau_studio_single_file_full.html")
-path.write_text(html, encoding="utf-8")
-str(path), len(html.splitlines())
-
 
 <!-- =================================================================================================
      EXTRA LINES (safe comments) — keeps everything single-file while you want "1000+ lines".
