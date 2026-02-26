@@ -517,10 +517,11 @@ nav a:hover{ color:white; }
 }
 
 .desktop-viewport{
-  height:520px;
-  background:#000;
-  overflow:auto;
-  position:relative;
+    height:720px;
+    background:#000;
+    overflow:hidden;
+    position:relative;
+    border-radius:18px;
 }
 
 .desktop-viewport::-webkit-scrollbar{ width:10px; }
@@ -531,15 +532,13 @@ nav a:hover{ color:white; }
   border:2px solid rgba(0,0,0,.35);
 }
 
-/* Desktop iframe */
 .desktop-viewport iframe{
-  width:100%;
-  height:1100px; /* taller so it scrolls */
-  border:0;
-  display:block;
-  background:#000;
+    width:100%;
+    height:1100px;
+    border:0;
+    display:block;
+    background:#000;
 }
-
 /* Phone frame overlay */
 .phone-frame{
   position:absolute;
