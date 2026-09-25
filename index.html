@@ -1,1367 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XAU Studio Co.</title>
-
-<style>
-
-
-/* =================================================================================================
-   XAU STUDIO — SINGLE FILE
-   - ONLY changes requested:
-     1) Make "Built for growth" use the SAME purple gradient vibe as FAQ.
-     2) Make Featured Project preview look PROFESSIONAL and show MORE of the site (no ugly scaling).
-     3) Add FAQ section (premium, animated, gradient).
-     4) Keep EVERYTHING else the same vibe (hero video stays, transitions stay, process stays).
-
-   ✅ UPDATE (ONLY FEATURED PROJECT):
-   - Shows BOTH: Desktop preview + Phone preview (live iframes)
-   - Cleaner layout + less purple intensity
-   - Looks like your POV: desktop + mobile on top of desktop
-   ================================================================================================= */
-
-
-/* ===== RESET ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,system-ui,Arial;
-}
-
-body{
-  background:#07070c;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* Smooth scroll */
-html{ scroll-behavior:smooth; }
-
-/* ===== NAVBAR ===== */
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:18px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-  background:linear-gradient(to bottom,rgba(0,0,0,.7),transparent);
-  backdrop-filter:blur(6px);
-}
-
-header img{
-  height:32px;
-}
-
-nav a{
-  color:#d7d7ff;
-  margin-left:30px;
-  text-decoration:none;
-  font-size:14px;
-  transition:.25s;
-}
-
-nav a:hover{ color:white; }
-
-/* ===== HERO ===== */
-.hero{
-  position:relative;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  overflow:hidden;
-}
-
-.hero video{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  min-width:100%;
-  min-height:100%;
-  object-fit:cover;
-  filter:blur(2px) brightness(.4);
-}
-
-/* keep your purple aura */
-.hero::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:
-    radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 40%),
-    radial-gradient(circle at 20% 80%,rgba(84,0,255,.35),transparent 40%);
-  z-index:1;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:900px;
-  padding:20px;
-}
-
-.hero-logo{
-  height:100px; /* you asked bigger */
-  margin-bottom:25px;
-  opacity:.95;
-}
-
-.hero h1{
-  font-size:58px;
-  font-weight:700;
-  letter-spacing:.5px;
-  margin-bottom:18px;
-}
-
-.hero p{
-  color:#c7c7da;
-  font-size:18px;
-  margin-bottom:30px;
-  line-height:1.6;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 34px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#7a5cff,#a855f7);
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-  transition:.3s;
-  position:relative;
-  overflow:hidden;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(123,92,255,.35);
-}
-
-/* subtle shine */
-.btn::after{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-40%;
-  width:60%;
-  height:180%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-  transform:rotate(18deg);
-  opacity:0;
-  transition:.6s;
-}
-.btn:hover::after{
-  opacity:1;
-  left:120%;
-}
-
-/* ===== REVEAL ANIMATION SYSTEM (keeps your transitions but makes them consistent) ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity .9s ease, transform .9s ease;
-}
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
-}
-.reveal.fade{
-  transform:none;
-}
-.reveal.fade.show{
-  opacity:1;
-}
-
-/* ===== STATS ===== */
-.stats{
-  padding:130px 40px;
-  text-align:center;
-  background:linear-gradient(to bottom,#07070c,#0b0b14);
-}
-
-.stats h2{
-  font-size:42px;
-  margin-bottom:20px;
-  background:linear-gradient(90deg,#a88bff,#7a5cff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.stats p{
-  max-width:760px;
-  margin:0 auto 70px;
-  color:#bdbddd;
-  line-height:1.7;
-}
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.stat-card{
-  padding:40px 25px;
-  border-radius:18px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(140,120,255,.18);
-  backdrop-filter:blur(10px);
-  transition:.4s;
-  opacity:0;
-  transform:translateY(40px);
-}
-
-.stat-card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.stat-number{
-  font-size:52px;
-  font-weight:700;
-  color:#a88bff;
-  margin-bottom:10px;
-}
-
-.stat-label{ color:#cfcff0; }
-
-/* ===== WHY CHOOSE ===== */
-.features{
-  padding:120px 40px;
-  text-align:center;
-}
-
-.features-intro{
-  max-width:850px;
-  margin:0 auto 60px;
-  color:#cfcff0;
-  line-height:1.8;
-  font-size:17px;
-}
-
-.features h2{
-  font-size:40px;
-  margin-bottom:30px;
-  background:linear-gradient(90deg,#a88bff,#7a5cff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.features-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:35px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.feature{
-  padding:35px;
-  border-radius:18px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(140,120,255,.15);
-  transition:.35s;
-  position:relative;
-}
-
-.feature:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(120,90,255,.18);
-}
-
-.feature h3{
-  margin-bottom:12px;
-  color:#a88bff;
-}
-.feature p{
-  color:#cfcff0;
-  line-height:1.6;
-}
-
-/* =================================================================================================
-   NEW: BUILT FOR GROWTH (same gradient vibe as FAQ) ✅
-   ================================================================================================= */
-
-.growth{
-  padding:140px 40px;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(to bottom,#0b0b14,#07070c);
-}
-
-/* Same style language as FAQ: big purple aura + smooth dark */
-.growth::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 45%),
-    radial-gradient(circle at 25% 80%,rgba(84,0,255,.35),transparent 48%),
-    linear-gradient(to bottom,rgba(12,12,20,.85),rgba(7,7,12,.92));
-  pointer-events:none;
-}
-
-.growth-inner{
-  position:relative;
-  z-index:2;
-  max-width:1200px;
-  margin:auto;
-}
-
-.growth-topbar{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-bottom:70px;
-  padding:18px;
-  border-radius:18px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(140,120,255,.18);
-  backdrop-filter:blur(12px);
-  box-shadow:0 18px 60px rgba(0,0,0,.45);
-}
-
-.pill{
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:12px;
-  color:#e7e7ff;
-  background:rgba(0,0,0,.25);
-  border:1px solid rgba(140,120,255,.18);
-  transition:.35s;
-  user-select:none;
-}
-.pill:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(120,90,255,.18);
-}
-
-.growth h2{
-  text-align:center;
-  font-size:44px;
-  margin-bottom:18px;
-  background:linear-gradient(90deg,#a88bff,#7a5cff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.growth-sub{
-  text-align:center;
-  max-width:820px;
-  margin:0 auto 70px;
-  color:#cfcff0;
-  line-height:1.75;
-}
-
-.growth-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
-  align-items:stretch;
-}
-
-.growth-card{
-  padding:28px 26px;
-  border-radius:18px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(140,120,255,.15);
-  backdrop-filter:blur(10px);
-  transition:.35s;
-  position:relative;
-}
-
-.growth-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 24px 55px rgba(0,0,0,.55);
-}
-
-.growth-card h3{
-  color:#a88bff;
-  margin-bottom:14px;
-  font-size:16px;
-}
-
-.growth-card ul{
-  padding-left:18px;
-}
-
-.growth-card li{
-  color:#cfcff0;
-  margin-bottom:10px;
-  line-height:1.6;
-  font-size:14px;
-}
-
-/* =================================================================================================
-   ✅ FEATURED PROJECT — Desktop + Phone Live Preview (YOUR POV)
-   - Less purple (but still vibe)
-   - Desktop frame shows REAL desktop site inside
-   - Phone frame shows REAL mobile site inside
-   - Both are iframes (live)
-   ================================================================================================= */
-
-.project{
-  padding:140px 40px;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(122,92,255,.20), transparent 55%),
-    radial-gradient(circle at 85% 85%, rgba(168,139,255,.14), transparent 55%),
-    linear-gradient(to bottom,#0b0b14,#07070c);
-}
-
-.project-container{
-  display:grid;
-  grid-template-columns:1fr 1.35fr;
-  gap:60px;
-  max-width:1300px;
-  margin:auto;
-  align-items:center;
-}
-
-.project-left h2{
-  font-size:42px;
-  margin-bottom:10px;
-  background:linear-gradient(90deg,#a88bff,#7a5cff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.project-left h3{
-  font-size:26px;
-  margin-bottom:18px;
-  color:#e7e7ff;
-}
-
-.project-left p{
-  color:#cfcff0;
-  line-height:1.7;
-  margin-bottom:18px;
-}
-
-.project-list{ margin-bottom:30px; }
-.project-list li{
-  color:#cfcff0;
-  margin-bottom:8px;
-}
-
-/* Right side layout: desktop + phone */
-.preview-dual{
-    position:relative;
-    width:100%;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-}
-
-/* Desktop frame */
-.desktop-frame{
-    width:100%;
-    max-width:900px;
-    border-radius:26px;
-    border:1px solid rgba(140,120,255,.22);
-    background:rgba(0,0,0,.40);
-    box-shadow:0 40px 120px rgba(0,0,0,.65);
-    overflow:hidden;
-    position:relative;
-    transform: translateY(40px);
-}
-
-.desktop-topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 14px;
-  background:linear-gradient(to right,rgba(12,12,22,.92),rgba(18,14,34,.78));
-  border-bottom:1px solid rgba(140,120,255,.14);
-}
-
-.dots{
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:rgba(255,255,255,.18);
-  border:1px solid rgba(255,255,255,.15);
-}
-.dot.purple{ background:rgba(168,139,255,.80); border-color:rgba(168,139,255,.40); }
-.dot.gray{ background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.12); }
-
-.preview-badges{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.badge{
-  font-size:12px;
-  padding:8px 10px;
-  border-radius:999px;
-  color:#e7e7ff;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(140,120,255,.14);
-}
-
-.desktop-viewport{
-    height:520px;
-   box-shadow:0 40px 120px rgba(0,0,0,.6);
-    width:1100px;
-    max-width:1100px;
-    margin:auto;
-    background:#000;
-    overflow:hidden;
-    position:relative;
-    border-radius:18px;
-    margin-bottom:-45px;
-}
-
-.desktop-viewport::-webkit-scrollbar{ width:10px; }
-.desktop-viewport::-webkit-scrollbar-track{ background:rgba(255,255,255,.04); }
-.desktop-viewport::-webkit-scrollbar-thumb{
-  background:rgba(168,139,255,.28);
-  border-radius:12px;
-  border:2px solid rgba(0,0,0,.35);
-}
-
-.desktop-viewport iframe{
-    width:1920px;
-    height:1080px;
-    border:0;
-    transform:scale(0.45);
-    transform-origin:top left;
-    pointer-events:none;
-}
-/* Phone frame overlay */
-.phone-frame{
-    position:absolute;
-    right:-45px;
-    bottom:-32px;
-    width:235px;
-    height:485px;
-    border-radius:34px;
-    background:rgba(0,0,0,.55);
-    border:1px solid rgba(140,120,255,.20);
-    box-shadow:0 30px 90px rgba(0,0,0,.75);
-    overflow:hidden;
-    backdrop-filter:blur(8px);
-    z-index:5;
-}
-.phone-notch{
-  position:absolute;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:92px;
-  height:18px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:999px;
-  z-index:3;
-}
-
-.phone-viewport{
-  position:absolute;
-  inset:0;
-  padding-top:36px; /* space for notch */
-  overflow:auto;
-}
-
-.phone-viewport::-webkit-scrollbar{ width:8px; }
-.phone-viewport::-webkit-scrollbar-track{ background:rgba(255,255,255,.03); }
-.phone-viewport::-webkit-scrollbar-thumb{
-  background:rgba(168,139,255,.24);
-  border-radius:12px;
-  border:2px solid rgba(0,0,0,.30);
-}
-
-/* Mobile iframe scaled to phone size */
-.phone-viewport iframe{
-  width:390px;           /* typical phone CSS width */
-  height:900px;
-  border:0;
-  transform:scale(0.59);
-  transform-origin:0 0;
-  display:block;
-  background:#000;
-}
-
-/* Hint bubble */
-.scroll-hint{
-  position:absolute;
-  left:14px;
-  bottom:14px;
-  font-size:12px;
-  padding:9px 12px;
-  border-radius:999px;
-  color:#e7e7ff;
-  background:rgba(0,0,0,.42);
-  border:1px solid rgba(140,120,255,.18);
-  backdrop-filter:blur(10px);
-}
-
-/* Responsive */
-@media (max-width:900px){
-  header{ padding:16px 20px; }
-  .project-container{ grid-template-columns:1fr; }
-  nav a{ margin-left:16px; }
-  .hero h1{ font-size:44px; }
-
-  .preview-dual{ min-height:520px; }
-  .desktop-frame{ max-width:100%; }
-  .desktop-viewport{ height:480px; }
-
-  .phone-frame{
-    right:14px;
-    bottom:14px;
-    width:210px;
-    height:450px;
-  }
-  .phone-viewport iframe{
-    width:390px;
-    height:844px;
-    border:0;
-    transform:scale(0.68);
-    transform-origin:top left;
-}
-}
-
-/* =================================================================================================
-   PROCESS — keep your process, but add professional “support content” without changing the timeline ✅
-   ================================================================================================= */
-
-.process{
-  padding:140px 40px;
-  text-align:center;
-  background:linear-gradient(to bottom,#0a0915,#05050a);
-  position:relative;
-  overflow:hidden;
-}
-
-.process::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 15%,rgba(138,79,255,.22),transparent 45%),
-    radial-gradient(circle at 85% 70%,rgba(84,0,255,.18),transparent 50%);
-  pointer-events:none;
-}
-
-.process h2{
-  position:relative;
-  z-index:2;
-  font-size:40px;
-  margin-bottom:22px;
-  background:linear-gradient(90deg,#a88bff,#7a5cff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.process-sub{
-  position:relative;
-  z-index:2;
-  max-width:820px;
-  margin:0 auto 80px;
-  color:#cfcff0;
-  line-height:1.8;
-}
-
-.process-bullets{
-  position:relative;
-  z-index:2;
-  max-width:980px;
-  margin:0 auto 70px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-
-.process-chip{
-  padding:16px 16px;
-  border-radius:16px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(140,120,255,.15);
-  color:#cfcff0;
-  font-size:13px;
-  line-height:1.55;
-  transition:.35s;
-}
-.process-chip:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 45px rgba(0,0,0,.55);
-}
-
-.timeline{
-  position:relative;
-  z-index:2;
-  max-width:820px;
-  margin:auto;
-  text-align:left;
-  border-left:2px solid rgba(140,120,255,.35);
-  padding-left:40px;
-}
-
-.step{
-  margin-bottom:60px;
-  position:relative;
-}
-
-.step::before{
-  content:"";
-  position:absolute;
-  left:-50px;
-  top:5px;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:#a88bff;
-  box-shadow:0 0 20px #7a5cff;
-}
-
-.step h4{
-  color:#a88bff;
-  margin-bottom:6px;
-  font-size:20px;
-}
-
-.step p{
-  color:#cfcff0;
-  line-height:1.7;
-}
-
-/* =================================================================================================
-   NEW: FAQ — premium gradient block + accordion + animations ✅
-   ================================================================================================= */
-
-.faq{
-  padding:140px 40px;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(to bottom,#07070c,#0b0b14);
-}
-
-.faq::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 70% 20%,rgba(138,79,255,.45),transparent 45%),
-    radial-gradient(circle at 25% 80%,rgba(84,0,255,.35),transparent 48%),
-    linear-gradient(to bottom,rgba(12,12,20,.88),rgba(7,7,12,.92));
-  pointer-events:none;
-}
-
-.faq-inner{
-  position:relative;
-  z-index:2;
-  max-width:1100px;
-  margin:auto;
-}
-
-.faq h2{
-  text-align:center;
-  font-size:44px;
-  margin-bottom:18px;
-  background:linear-gradient(90deg,#a88bff,#7a5cff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.faq-sub{
-  text-align:center;
-  max-width:860px;
-  margin:0 auto 70px;
-  color:#cfcff0;
-  line-height:1.75;
-}
-
-.faq-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-}
-
-.faq-item{
-  border-radius:18px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(140,120,255,.18);
-  backdrop-filter:blur(10px);
-  overflow:hidden;
-  transition:.35s;
-}
-
-.faq-item:hover{
-  box-shadow:0 18px 55px rgba(0,0,0,.55);
-  transform:translateY(-4px);
-}
-
-.faq-q{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  padding:18px 18px;
-  color:#e7e7ff;
-  font-weight:600;
-  background:transparent;
-  border:0;
-  cursor:pointer;
-  text-align:left;
-}
-
-.faq-q span{ line-height:1.35; }
-
-.faq-icon{
-  width:36px;
-  height:36px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#e7e7ff;
-  background:rgba(0,0,0,.28);
-  border:1px solid rgba(140,120,255,.22);
-  flex:0 0 auto;
-  transition:.35s;
-}
-
-.faq-a{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .45s ease;
-}
-
-.faq-a .faq-a-inner{
-  padding:0 18px 18px;
-  color:#cfcff0;
-  line-height:1.75;
-  font-size:14px;
-}
-
-.faq-item.open .faq-a{ max-height:280px; }
-.faq-item.open .faq-icon{ transform:rotate(45deg); box-shadow:0 0 18px rgba(168,139,255,.35); }
-
-.faq-foot{
-  text-align:center;
-  margin-top:34px;
-  color:#cfcff0;
-  opacity:.9;
-}
-
-/* ===== CONTACT ===== */
-.contact{
-  padding:130px 40px;
-  text-align:center;
-  background:linear-gradient(to top,#07070c,#0b0b14);
-}
-
-.contact h2{
-  font-size:42px;
-  margin-bottom:20px;
-}
-
-.contact p{
-  color:#cfcff0;
-  margin-bottom:35px;
-}
-
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:#25D366;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  font-size:26px;
-  box-shadow:0 10px 25px rgba(0,0,0,.5);
-  z-index:999;
-  cursor:pointer;
-}
-
-/* =================================================================================================
-   (extra: tiny ambient motion background for premium feel)
-   ================================================================================================= */
-.ambient{
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(168,139,255,.12),transparent 35%),
-    radial-gradient(circle at 75% 65%,rgba(122,92,255,.10),transparent 40%),
-    radial-gradient(circle at 50% 90%,rgba(84,0,255,.08),transparent 45%);
-  filter:blur(30px);
-  animation:floaty 18s ease-in-out infinite;
-  opacity:.75;
-  pointer-events:none;
-}
-@keyframes floaty{
-  0%{ transform:translate3d(0,0,0) scale(1); }
-  50%{ transform:translate3d(-2%,2%,0) scale(1.02); }
-  100%{ transform:translate3d(0,0,0) scale(1); }
-}
-/* =========================================================
-   📱 MOBILE FIX — XAU STUDIO (VERY IMPORTANT)
-   This fixes the broken mobile layout
-   ========================================================= */
-
-@media (max-width: 900px){
-
-  /* Stack layout */
-  .featured-project{
-    grid-template-columns: 1fr !important;
-    gap:40px;
-  }
-
-  /* Text area */
-  .featured-text{
-    text-align:left;
-    padding:0 22px;
-  }
-
-  .featured-text h2{
-    font-size:42px !important;
-    line-height:1.15;
-  }
-
-  .featured-text h3{
-    font-size:26px !important;
-  }
-
-  .featured-text p{
-    font-size:17px;
-  }
-@media (max-width: 900px){
-   
-  /* Hide desktop preview */
-  .desktop-frame{
-    display:none !important;
-  }
-
-  /* Phone preview becomes main */
-  .phone-frame{
-    position:relative !important;
-    right:auto !important;
-    bottom:auto !important;
-    margin:0 auto;
-    width:280px;
-    height:560px;
-    transform:none !important;
-  }
-
-  .preview-dual{
-    display:block !important;
-    min-height:auto !important;
-    margin-top:30px;
-  }
-
-  /* Button fix */
-  .cta-button{
-    width:100%;
-    text-align:center;
-  }
-
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="XAU Studio Co. builds connected websites, CRM, automations and AI systems." />
+  <title>XAU Studio Co. — Growth Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./core.css" />
+  <link rel="stylesheet" href="./sales.css" />
+  <link rel="stylesheet" href="./polish.css" />
 </head>
-
 <body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="XAU Studio Co. home">
+      <span class="brand-x"><img src="./assets/xo-mascot.png" alt="" /></span>
+      <span><b>AU</b><small>STUDIO CO.</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#work">Our Work</a><a href="#websites">Websites</a><a href="#core-demo">XAU Prime</a><a href="#ai-agents">AI Agents</a><a href="#book-demo">Book Demo</a>
+    </nav>
+    <div class="nav-actions"><button class="ghost">Client Login</button><a class="btn" href="#contact">Start a Project <span>↗</span></a></div>
+  </header>
 
-<header>
-  <img src="logo.png" alt="XAU Studio Logo">
-  <nav>
-    <a href="#about">About</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <video autoplay muted loop playsinline>
-    <source src="codes.mp4" type="video/mp4">
-  </video>
-
-  <div class="hero-content reveal show">
-    <img src="hero-logo.png" class="hero-logo" alt="XAU Studio">
-    <h1>XAU Studio Co.</h1>
-    <p>Modern custom-coded websites, branding and digital systems designed to help real businesses grow online and generate clients.</p>
-    <a href="#contact" class="btn">Start a Project</a>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats" id="about">
-  <h2 class="reveal">We build real business websites</h2>
-  <p class="reveal">Not templates. Not page builders. We engineer real business websites using structured code, performance optimization and conversion psychology.</p>
-
-  <div class="stats-grid">
-    <div class="stat-card"><div class="stat-number" data-target="6">0</div><div class="stat-label">Years Experience</div></div>
-    <div class="stat-card"><div class="stat-number" data-target="50">0</div><div class="stat-label">Projects Completed</div></div>
-    <div class="stat-card"><div class="stat-number" data-target="65">0</div><div class="stat-label">Satisfied Clients</div></div>
-    <div class="stat-card"><div class="stat-number" data-target="24">0</div><div class="stat-label">Hour Response Time</div></div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE -->
-<section class="features">
-  <h2 class="reveal">Why choose XAU Studio</h2>
-
-  <div class="features-intro reveal">
-    We don’t build websites — we build online business systems. Every project is engineered for speed, SEO visibility and client conversion. Our goal is to help real companies generate consistent leads and grow long-term.
-  </div>
-
-  <div class="features-grid">
-    <div class="feature reveal"><h3>Custom Coding</h3><p>We build everything from scratch. Faster websites and better Google ranking.</p></div>
-    <div class="feature reveal"><h3>SEO Structure</h3><p>Your website is optimized technically so Google understands your business and ranks locally.</p></div>
-    <div class="feature reveal"><h3>Conversion Focused</h3><p>Designed to generate calls, forms and real customers.</p></div>
-    <div class="feature reveal"><h3>Business Support</h3><p>We guide you after launch with strategy and growth planning.</p></div>
-  </div>
-</section>
-
-<!-- BUILT FOR GROWTH (same gradient vibe as FAQ) -->
-<section class="growth">
-  <div class="ambient"></div>
-  <div class="growth-inner">
-
-    <div class="growth-topbar reveal">
-      <div class="pill">Structured Code</div>
-      <div class="pill">SEO Foundations</div>
-      <div class="pill">Fast Load Speed</div>
-      <div class="pill">Conversion Layout</div>
-      <div class="pill">Lead Systems</div>
-      <div class="pill">Modern UI/UX</div>
-      <div class="pill">Scalable</div>
-      <div class="pill">Launch Support</div>
-    </div>
-
-    <h2 class="reveal">Built for growth</h2>
-    <div class="growth-sub reveal">
-      We work with real businesses that need more than a “pretty website.”
-      We build systems that explain your services clearly, earn trust fast, and turn visitors into leads.
-    </div>
-
-    <div class="growth-grid">
-      <div class="growth-card reveal">
-        <h3>Who we work with</h3>
-        <ul>
-          <li>Contractors & service businesses</li>
-          <li>Local companies that need leads</li>
-          <li>Entrepreneurs & growing brands</li>
-          <li>Businesses upgrading from old sites</li>
-        </ul>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-lines" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> Digital growth systems</div>
+        <h1>WE BUILD THE<br>SYSTEM BEHIND<br>YOUR <em>GROWTH.</em></h1>
+        <p>Websites, CRM, automation and AI—designed as one connected engine.</p>
+        <div class="hero-actions"><a class="btn big" href="#contact">Build My System <span>→</span></a><a class="text-link" href="#core">Explore XAU Prime</a></div>
+        <div class="trust">◈ Built for contractors and growing service businesses</div>
       </div>
 
-      <div class="growth-card reveal">
-        <h3>What we build</h3>
-        <ul>
-          <li>Custom business websites</li>
-          <li>Landing pages that convert</li>
-          <li>Service pages & SEO structure</li>
-          <li>Contact forms & lead routing</li>
-        </ul>
-      </div>
-
-      <div class="growth-card reveal">
-        <h3>How we build it</h3>
-        <ul>
-          <li>Clean HTML / CSS / JS (custom-coded)</li>
-          <li>Performance + speed optimization</li>
-          <li>SEO-ready structure for Google</li>
-          <li>Modern UI / UX that feels premium</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- FEATURED PROJECT -->
-<section class="project">
-  <div class="project-container">
-
-    <div class="project-left reveal">
-      <h2>Featured Project</h2>
-      <h3>LizMar Construction LLC</h3>
-
-      <p>LizMar Construction is a real roofing and exterior company based in Rhode Island. The business needed a professional online presence capable of generating leads, building trust and clearly explaining their services to homeowners.</p>
-
-      <p>The entire website was designed and developed from scratch including layout, structure, service pages, lead systems and local SEO optimization. Every section was built around customer experience and conversion.</p>
-
-      <ul class="project-list">
-        <li>Custom coded website</li>
-        <li>Lead generation contact forms</li>
-        <li>Mobile responsive layout</li>
-        <li>Local SEO structure</li>
-        <li>Service explanation pages</li>
-        <li>Trust & certification sections</li>
-      </ul>
-
-      <a href="https://lizmarconstructionllc.com" target="_blank" class="btn">Visit Live Website</a>
-    </div>
-
-    <div class="project-right reveal">
-      <div class="preview-dual">
-
-        <!-- Desktop preview -->
-        <div class="desktop-frame">
-          <div class="desktop-topbar">
-            <div class="dots">
-              <div class="dot purple"></div>
-              <div class="dot gray"></div>
-              <div class="dot gray"></div>
-            </div>
-            <div class="preview-badges">
-              <div class="badge">Desktop Preview</div>
-              <div class="badge">Scroll Inside</div>
-            </div>
-          </div>
-
-          <div class="desktop-viewport">
-            <iframe src="https://lizmarconstructionllc.com" loading="lazy"></iframe>
-            <div class="scroll-hint">Scroll desktop preview</div>
-          </div>
+      <div class="ecosystem" id="ecosystem" aria-label="Interactive website to CRM flow">
+        <div class="hero-chip chip-one"><i></i><span><b>New lead captured</b><small>Website · just now</small></span></div>
+        <div class="hero-chip chip-two"><i>✓</i><span><b>Estimate accepted</b><small>$18,640 · signed</small></span></div>
+        <div class="portal website-card tilt">
+          <div class="portal-label">YOUR WEBSITE <i>● LIVE</i></div>
+          <div class="roof-visual"><span></span><span></span><span></span></div>
+          <h3>Premium exterior<br>solutions.</h3>
+          <div class="mini-form"><span>Name</span><span>Email</span><button>Send Request</button></div>
         </div>
-
-        <!-- Phone preview overlay -->
-        <div class="phone-frame" aria-label="Mobile Preview">
-          <div class="phone-notch"></div>
-          <div class="phone-viewport">
-            <!-- same site, but forced phone-like width via scaling -->
-            <iframe src="https://lizmarconstructionllc.com" loading="lazy"></iframe>
+        <div class="signal" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+        <div class="portal crm-card tilt">
+          <div class="portal-label">XAU PRIME CRM <i>● SYNCED</i></div>
+          <div class="pipeline-head"><strong>Pipeline</strong><span>Live flow ↗</span></div>
+          <div class="pipeline">
+            <div><small>NEW</small><b>24</b><span>AJ</span><span>MR</span></div>
+            <div><small>CONTACTED</small><b>8</b><span>RB</span><span>TM</span></div>
+            <div><small>ESTIMATE</small><b>5</b><span>KS</span><span>DL</span></div>
+            <div class="won"><small>WON</small><b>12</b><span>✓</span><span>✓</span></div>
           </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <h2 class="reveal">Our Process</h2>
-  <div class="process-sub reveal">
-    We keep it simple, structured, and transparent — so you always know what’s happening and what’s next.
-    Every step is designed to move fast without sacrificing quality.
-  </div>
-
-  <div class="process-bullets">
-    <div class="process-chip reveal">Clear project roadmap + timeline</div>
-    <div class="process-chip reveal">Custom layout built for your audience</div>
-    <div class="process-chip reveal">Speed optimization + clean structure</div>
-    <div class="process-chip reveal">SEO-ready foundation (technical)</div>
-    <div class="process-chip reveal">Lead systems (forms, routing, CTA)</div>
-    <div class="process-chip reveal">Launch support + improvement plan</div>
-  </div>
-
-  <div class="timeline">
-    <div class="step reveal"><h4>1. Consultation</h4><p>We learn your business, competitors and goals.</p></div>
-    <div class="step reveal"><h4>2. Strategy & Design</h4><p>We create a high-converting layout.</p></div>
-    <div class="step reveal"><h4>3. Development</h4><p>We code, optimize speed and implement SEO structure.</p></div>
-    <div class="step reveal"><h4>4. Launch</h4><p>Your business goes live and starts getting clients.</p></div>
-  </div>
-</section>
-
-<!-- FAQ (NEW) -->
-<section class="faq" id="faq">
-  <div class="ambient"></div>
-  <div class="faq-inner">
-    <h2 class="reveal">FAQ</h2>
-    <div class="faq-sub reveal">
-      Quick answers to the questions we get the most — so you understand exactly how we work, what you receive,
-      and what to expect from start to launch.
-    </div>
-
-    <div class="faq-grid">
-      <div class="faq-item reveal">
-        <button class="faq-q" type="button">
-          <span>How long does a website project take?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Most projects take <b>1–3 weeks</b> depending on the scope (pages, content, and features).
-            We move fast because we use a clear structure and a proven build process.
-          </div>
+          <div class="revenue"><small>Revenue Generated</small><strong>$482,750</strong><em>+24%</em></div>
         </div>
       </div>
+      <div class="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
+    </section>
 
-      <div class="faq-item reveal">
-        <button class="faq-q" type="button">
-          <span>Do you use templates or page builders?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            No. We build <b>custom-coded</b> websites using clean HTML/CSS/JS — optimized for performance,
-            SEO structure, and conversion. That’s why it feels premium and loads fast.
+    <div class="marquee"><div>WEBSITES <i>•</i> CRM <i>•</i> AUTOMATION <i>•</i> AI <i>•</i> MARKETING <i>•</i> WEBSITES <i>•</i> CRM <i>•</i> AUTOMATION <i>•</i> AI <i>•</i> MARKETING <i>•</i></div></div>
+
+    <section class="services" id="system">
+      <div class="section-intro reveal"><span>WHAT WE DO</span><h2>ONE STUDIO.<br>YOUR ENTIRE<br>GROWTH SYSTEM.</h2><p>We build professional websites that turn attention into real inquiries. XAU Prime CRM keeps every lead, estimate, document and project organized. Automations handle repetitive follow-up so opportunities do not disappear. AI agents answer calls, respond to messages and help your team move faster. Marketing connects the whole system with results you can actually measure.</p></div>
+      <div class="service-grid">
+        <article class="service dark tilt reveal" id="websites"><span>01</span><h3>Websites<br>that convert</h3><div class="web-metric"><b>+<span data-count="38">0</span>%</b><small>FORM SUBMISSIONS</small><svg class="live-chart" viewBox="0 0 300 90"><polyline points="0,78 35,62 62,70 95,42 124,50 152,25 180,36 215,15 245,24 300,4"/></svg></div></article>
+        <article class="service tilt reveal" id="core"><span>02</span><h3>CRM<br>that follows up</h3><div class="mini-pipe"><div><small>NEW</small><b>24</b></div><div><small>CONTACTED</small><b>8</b></div><div><small>ESTIMATE</small><b>5</b></div><div class="active"><small>WON</small><b>12</b></div></div></article>
+        <article class="service tilt reveal"><span>03</span><h3>Automation<br>that never sleeps</h3><div class="automation"><p>ϟ New lead submitted</p><i></i><p>✉ Instant SMS + email</p><i></i><p>◷ No reply? Follow up</p></div></article>
+        <article class="service tilt reveal"><span>04</span><h3>Marketing<br>you can measure</h3><div class="roi"><div>4.6x<small>ROAS</small></div><p><span>Ad spend<br><b>$12,450</b></span><span>Revenue<br><b>$57,480</b></span></p></div></article>
+      </div>
+    </section>
+
+    <section class="portfolio" id="work">
+      <div class="portfolio-heading reveal">
+        <span>SELECTED WORK · LIVE WEBSITES</span>
+        <h2>BUILT FOR THE<br><em>REAL WORLD.</em></h2>
+        <p>Every project is designed around the company behind it. We organize the services, build trust quickly and make the next step obvious. Each layout is tested across desktop and mobile. Performance and conversion matter as much as appearance. Open any project below to experience the live website.</p>
+      </div>
+      <div class="portfolio-list">
+        <article class="project-showcase reveal">
+          <div class="project-meta"><span>01 · CONSTRUCTION</span><h3>LizMar Construction</h3><p>LizMar needed one digital home for roofing, siding, gutters, painting and maintenance services. We organized a large service offering so homeowners can find the right solution without getting lost. Strong calls to action guide visitors toward estimates and service requests. Trust details support the decision before a customer reaches out. The responsive experience keeps that same path clear on a phone, where most local customers begin.</p><a href="https://www.lizmarconstructionllc.com" target="_blank" rel="noopener">Visit live website <b>↗</b></a></div>
+          <div class="device-scene">
+            <div class="desktop-device"><div class="browser-bar"><i></i><i></i><i></i><span>lizmarconstructionllc.com</span></div><iframe src="https://www.lizmarconstructionllc.com" title="LizMar Construction desktop website preview" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="phone-device"><div class="phone-island"></div><iframe src="https://www.lizmarconstructionllc.com" title="LizMar Construction mobile website preview" loading="lazy" tabindex="-1"></iframe></div>
           </div>
+        </article>
+        <article class="project-showcase black-diamonds reveal">
+          <div class="project-meta"><span>02 · ROOFING</span><h3>Black Diamonds Roofing</h3><p>Black Diamonds Roofing needed a website that feels dependable from the first screen. We created a direct service journey around roofing work and customer trust. The structure makes important information easy to scan before requesting an estimate. Clear actions reduce friction between interest and contact. Desktop and mobile layouts carry the same confident brand without sacrificing readability.</p><a href="https://blackdiamondsroofingllc.com" target="_blank" rel="noopener">Visit live website <b>↗</b></a></div>
+          <div class="device-scene">
+            <div class="desktop-device"><div class="browser-bar"><i></i><i></i><i></i><span>blackdiamondsroofingllc.com</span></div><iframe src="https://blackdiamondsroofingllc.com" title="Black Diamonds Roofing desktop website preview" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="phone-device"><div class="phone-island"></div><iframe src="https://blackdiamondsroofingllc.com" title="Black Diamonds Roofing mobile website preview" loading="lazy" tabindex="-1"></iframe></div>
+          </div>
+        </article>
+        <article class="project-showcase reveal">
+          <div class="project-meta"><span>03 · RESTORATION</span><h3>Storm Rebuild Restoration</h3><p>Storm Rebuild Restoration serves customers who often need answers quickly after property damage. We shaped the website so urgent services and restoration expertise are immediately visible. The content helps property owners understand what the company can handle. Strong contact paths move visitors from uncertainty to a real conversation. The mobile view keeps those actions accessible when customers are searching from the field.</p><a href="https://stormrebuildrestorationinc.com" target="_blank" rel="noopener">Visit live website <b>↗</b></a></div>
+          <div class="device-scene">
+            <div class="desktop-device"><div class="browser-bar"><i></i><i></i><i></i><span>stormrebuildrestorationinc.com</span></div><iframe src="https://stormrebuildrestorationinc.com" title="Storm Rebuild Restoration desktop website preview" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="phone-device"><div class="phone-island"></div><iframe src="https://stormrebuildrestorationinc.com" title="Storm Rebuild Restoration mobile website preview" loading="lazy" tabindex="-1"></iframe></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="core-live" id="core-demo">
+      <div class="core-heading reveal">
+        <div><span class="kicker">INSIDE XAU PRIME CRM</span><h2>ONE CRM.<br><em>EVERYTHING LIVE.</em></h2></div>
+        <p>Move from the first measurement to the final payment without leaving the system. Click each module to explore the experience.</p>
+        <div class="live-badge"><i></i> INTERACTIVE DEMO</div>
+      </div>
+      <div class="core-shell reveal">
+        <aside class="core-tabs" role="tablist" aria-label="XAU Prime CRM features">
+          <button class="core-tab active" data-panel="measurements" role="tab" aria-selected="true"><span>⌁</span><b>Measurements</b><small>Roof data → estimate</small></button>
+          <button class="core-tab" data-panel="estimates" role="tab"><span>▤</span><b>Estimates</b><small>Build & send faster</small></button>
+          <button class="core-tab" data-panel="documents" role="tab"><span>✎</span><b>Signed Documents</b><small>Track every signature</small></button>
+          <button class="core-tab" data-panel="invoices" role="tab"><span>$</span><b>Invoices</b><small>Payments & balances</small></button>
+          <button class="core-tab" data-panel="calendar" role="tab"><span>□</span><b>Calendar</b><small>Teams & meetings</small></button>
+          <button class="core-tab" data-panel="projects" role="tab"><span>◇</span><b>Projects</b><small>Every job in control</small></button>
+          <button class="core-tab" data-panel="automations" role="tab"><span>ϟ</span><b>Automations</b><small>Follow-up on autopilot</small></button>
+        </aside>
+        <div class="core-stage">
+          <div class="stage-top"><div><span class="stage-dot"></span><b>XAU Prime CRM Product Tour</b></div><div><button class="stage-action" id="playDemo">▶ Run live demo</button><span>● Synced</span></div></div>
+          <article class="core-panel active" data-view="measurements">
+            <div class="measure-copy"><span>MEASUREMENTS REPORT</span><h3>Get your measurements.<br><em>Apply them to your estimate.</em></h3><p>Import accurate roof measurements, review every dimension, then send quantities directly into a ready-to-price estimate.</p><div class="measure-steps"><b class="on">01 Measure</b><i></i><b>02 Review</b><i></i><b>03 Apply</b></div><button class="btn demo-trigger">Watch the flow <span>→</span></button></div>
+            <div class="measure-visual native-measure"><div class="roof-blueprint roof-photo"><div class="blueprint-head"><span>RESIDENTIAL ROOF · AERIAL MEASURE</span><b>STRUCTURE DETECTED</b></div><img src="./assets/residential-roof-measurement-v1.png" alt="Aerial view of a residential house roof with cyan measurement lines across ridges, hips, valleys and eaves" /><div class="roof-callout callout-1"><i>1</i><span><small>MAIN RIDGE</small><b>86.0 ft</b></span></div><div class="roof-callout callout-2"><i>2</i><span><small>FRONT EAVE</small><b>62.4 ft</b></span></div><div class="roof-callout callout-3"><i>3</i><span><small>VALLEY</small><b>24.8 ft</b></span></div><div class="roof-callout callout-4"><i>4</i><span><small>ROOF PLANES</small><b>12 detected</b></span></div><div class="blueprint-total"><small>TOTAL ROOF AREA</small><b><span data-count="4527">0</span> ft²</b></div></div><div class="estimate-preview"><div><span>ESTIMATE #1048</span><em>LIVE</em></div><h4>Roof Replacement</h4><p><span>Shingles · 46.2 SQ</span><b>$14,322</b></p><p><span>Underlayment · 5</span><b>$1,175</b></p><p><span>Labor & disposal</span><b>$4,860</b></p><footer><span>TOTAL</span><b>$22,197</b></footer><i class="data-stream"><b></b><b></b><b></b><b></b></i></div><div class="xo-chat"><div class="chat-head"><span class="ai-badge">AI</span><div><b>XAU PRIME AI</b><small>Roof measurement agent</small></div><em><i></i> LIVE</em></div><div class="chat-message"><p id="xoTyping" data-text="Residential roof detected. Measurements are ready to apply to the estimate."></p><span class="typing-cursor"></span></div><div class="chat-actions"><button class="chat-scan">⌁ Scan roof</button><span class="scan-status">Ready to scan <b>→</b></span></div></div><div class="metric-pop pop-b"><small>PITCH</small><b><span data-count="8">0</span> / 12</b></div><div class="metric-pop pop-d"><small>WASTE</small><b><span data-count="10">0</span>%</b></div><div class="scan-progress"><i></i><span>ANALYZING RESIDENTIAL ROOF PLANES</span></div></div>
+          </article>
+          <article class="core-panel" data-view="estimates"><div class="module-title"><span>SMART ESTIMATES · LIVE BUILDER</span><h3>Watch the estimate build itself.</h3><p>Measurements, materials and labor arrive ready to review.</p></div><div class="estimate-builder live-estimate"><div class="estimate-lines"><div><span>Architectural shingles <small>46.2 SQ</small></span><b>$14,322</b><i>✓</i></div><div><span>Synthetic underlayment <small>5 rolls</small></span><b>$1,175</b><i>✓</i></div><div><span>Ice & water shield <small>8 rolls</small></span><b>$1,840</b><i>✓</i></div><div><span>Labor & disposal</span><b>$4,860</b><i>✓</i></div></div><div class="estimate-total"><span>ESTIMATE TOTAL</span><b id="estimateTotal">$0</b><small>Profit margin <strong>34%</strong></small><button class="send-estimate">Build estimate ▶</button></div></div><div class="live-caption"><i></i><span>XAU Prime AI is applying your measurements and price book</span></div></article>
+          <article class="core-panel" data-view="documents"><div class="module-title"><span>SIGNED DOCUMENTS · LIVE STATUS</span><h3>See the signature happen.</h3><p>Contracts, estimates and change orders in one secure timeline.</p></div><div class="doc-board"><div class="doc-preview live-doc"><span>CONTRACT #1048</span><h4>Roof Replacement Agreement</h4><i></i><i></i><i></i><svg class="signature-svg" viewBox="0 0 330 75"><path d="M8 58C50 12 43 66 80 37C110 15 90 65 130 38C151 23 145 60 173 40C195 24 207 45 226 35C250 21 267 42 319 22"/></svg><small class="sign-time">Waiting for customer signature…</small></div><div class="doc-list"><div><i class="signed">✓</i><span><b>Service Agreement</b><small>Signed today</small></span><em>Complete</em></div><div><i class="signed">✓</i><span><b>Estimate #1048</b><small>Signed today</small></span><em>Complete</em></div><div class="pending-doc"><i>···</i><span><b>Change Order #2</b><small>Ready to request</small></span><em class="pending">Pending</em></div><button class="sign-demo">Send signature request →</button></div></div></article>
+          <article class="core-panel" data-view="invoices"><div class="module-title"><span>INVOICES & PAYMENTS · LIVE</span><h3>Hear the payment come in.</h3><p>Deposits, progress payments and balances update in real time.</p></div><div class="invoice-grid"><div class="money-ring"><div><b><span data-count="82">0</span>%</b><small>COLLECTED</small></div></div><div class="invoice-stats"><div><small>PAID THIS MONTH</small><b id="paidTotal">$68,420</b><em>↑ 18%</em></div><div><small>OUTSTANDING</small><b id="outstandingTotal">$14,760</b></div><button class="payment-demo">Simulate live payment +$4,250</button></div><div class="payment-feed"><span><i></i> LIVE PAYMENTS</span><p class="incoming-payment"><i>✓</i><b>New payment received</b><em>+$4,250</em></p><p><i>✓</i><b>Blackstone Roofing</b><em>+$8,500</em></p><p><i>✓</i><b>Johnson Residence</b><em>+$4,250</em></p><p><i>✓</i><b>Martinez Siding</b><em>+$2,800</em></p></div></div></article>
+          <article class="core-panel" data-view="calendar"><div class="module-title"><span>GOOGLE CALENDAR · TWO-WAY SYNC</span><h3>Book it once. See it everywhere.</h3><p>Estimates, site visits and demos without double booking.</p></div><div class="calendar-demo"><div class="calendar-days"><b>MON <em>7</em></b><b class="today">TUE <em>8</em></b><b>WED <em>9</em></b><b>THU <em>10</em></b><b>FRI <em>11</em></b></div><div class="schedule"><span>9 AM</span><div class="event cyan"><b>Roof inspection</b><small>Johnson Residence · On site</small></div><span>11 AM</span><div class="event volt demo-event"><b>XAU Prime CRM Demo</b><small>Martinez Exteriors · Google Meet</small><button>Join demo ↗</button></div><span>2 PM</span><div class="event"><b>Estimate review</b><small>Blackstone Roofing · Video call</small></div></div><button class="calendar-book">+ Book a demo meeting</button></div></article>
+          <article class="core-panel" data-view="projects"><div class="module-title"><span>PROJECT COMMAND CENTER · LIVE</span><h3>Watch every job move forward.</h3><p>Track production, crews, materials, photos and profitability.</p></div><div class="project-board"><div class="project-card active-project"><span>IN PROGRESS</span><h4>Johnson Roof Replacement</h4><div class="progress"><i style="width:72%"></i></div><small><b class="project-percent">72</b>% complete · Crew A</small><footer><b>$28,450</b><em>32% margin</em></footer><button class="advance-project">Log today's progress +</button></div><div class="project-card"><span>SCHEDULED</span><h4>Martinez Exterior Renovation</h4><div class="progress"><i style="width:18%"></i></div><small>Starts Sep 12 · Crew B</small><footer><b>$46,800</b><em>38% margin</em></footer></div><div class="project-map"><div class="map-grid"></div><i class="pin p1">1</i><i class="pin p2">2</i><i class="pin p3">3</i><span>3 active sites</span></div></div></article>
+          <article class="core-panel" data-view="automations"><div class="module-title"><span>SMART AUTOMATIONS · LIVE WORKFLOW</span><h3>Watch AI follow the lead.</h3><p>Build workflows visually and let XAU Prime watch every opportunity.</p></div><div class="flow-builder"><div class="flow-node start"><i>ϟ</i><span><small>TRIGGER</small><b>New website lead</b></span></div><div class="flow-line"><i></i></div><div class="flow-node"><i>✉</i><span><small>INSTANTLY</small><b>Send SMS + email</b></span></div><div class="flow-line"><i></i></div><div class="flow-node"><i>◷</i><span><small>WAIT 1 HOUR</small><b>Check for reply</b></span></div><div class="flow-split"><span>REPLIED → Notify team</span><span>NO REPLY → Follow up</span></div><button class="automation-run">▶ Run workflow</button></div></article>
         </div>
       </div>
+      <div class="feature-rail reveal"><span>ALSO INCLUDED</span><div><b>Lead Pipeline</b><b>Customer Portal</b><b>Photo Reports</b><b>Google Calendar</b><b>QuickBooks Ready</b><b>Team Tracking</b><b>Website Analytics</b><b>AI Agent Hub</b></div></div>
+    </section>
 
-      <div class="faq-item reveal">
-        <button class="faq-q" type="button">
-          <span>Will my website show up on Google?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            We build the right <b>technical SEO foundation</b> (structure, speed, headings, metadata, indexing readiness).
-            Ranking depends on competition and content, but we make sure your site is built the correct way from day one.
-          </div>
-        </div>
+    <section class="ai-agents" id="ai-agents">
+      <div class="agents-heading reveal"><span>AI AGENTS · POWERED WITH RETELL</span><h2>A TEAM THAT<br><em>NEVER CLOCKS OUT.</em></h2><p>XAU Prime CRM will bring calls, messages, estimates and follow-up into the same operating system. Each agent handles a specific task, records the conversation and passes the next action into the CRM. Your team stays in control while repetitive communication keeps moving. Customers receive faster answers during business hours and after hours. The goal is simple: fewer missed opportunities and less manual work.</p></div>
+      <div class="agent-console reveal">
+        <div class="call-live"><span><i></i> LIVE CALL · 02:18</span><h3>“I need an estimate for my roof.”</h3><div class="voice-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>AI Receptionist captured the address, service type and preferred appointment time.</p><b>Lead created in XAU Prime CRM ✓</b></div>
+        <div class="agent-route"><span>CALL</span><i>→</i><span>QUALIFY</span><i>→</i><span>BOOK</span><i>→</i><span>CRM</span></div>
       </div>
+      <div class="agents-grid">
+        <article class="agent-card reveal"><span>01 · RETELL VOICE</span><h3>AI Receptionist</h3><p>Answers incoming calls, speaks naturally, captures lead details and books the next step—even after hours.</p><b>Calls answered 24/7</b></article>
+        <article class="agent-card reveal"><span>02 · RETELL + MESSAGING</span><h3>Message Agent</h3><p>Responds to website chats and customer messages, answers common questions and saves every conversation.</p><b>Instant text response</b></article>
+        <article class="agent-card reveal"><span>03 · VOICE TO ESTIMATE</span><h3>Estimate Agent</h3><p>Turns a spoken job description into estimate line items, prepares the draft and sends it for team approval.</p><b>Speak it. Review it. Send it.</b></article>
+        <article class="agent-card reveal"><span>04 · SALES FOLLOW-UP</span><h3>Follow-Up Agent</h3><p>Checks unsold estimates, follows up at the right time and alerts the team when a customer is ready.</p><b>No lead forgotten</b></article>
+        <article class="agent-card reveal"><span>05 · SCHEDULING</span><h3>Appointment Agent</h3><p>Finds available times, confirms appointments, sends reminders and updates the shared calendar automatically.</p><b>Calendar always synced</b></article>
+        <article class="agent-card reveal"><span>06 · REPUTATION</span><h3>Review Agent</h3><p>Requests feedback after completed work, routes unhappy customers to the team and helps grow verified reviews.</p><b>Protect the customer experience</b></article>
+      </div>
+    </section>
 
-      <div class="faq-item reveal">
-        <button class="faq-q" type="button">
-          <span>Do you offer support after the website is live?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Yes. We can provide ongoing updates, improvements, and performance monitoring.
-            We also guide you on next steps to keep growing (SEO, pages, lead optimization).
-          </div>
-        </div>
+    <section class="why-core">
+      <div class="why-heading reveal"><span>WHY XAU PRIME CRM</span><h2>BUILT TO CLOSE MORE.<br><em>NOT CREATE MORE WORK.</em></h2><p>XAU Prime gives contractors one connected place to capture leads, answer customers, prepare estimates, collect signatures and manage production. Your office sees what needs attention now, your field team sees what happens next and every customer interaction stays attached to the right job.</p></div>
+      <div class="proof-strip reveal"><div><small>SPEED TO LEAD</small><b>&lt; 60 sec</b><span>AI response target</span></div><div><small>FOLLOW-UP</small><b>24 / 7</b><span>Calls, SMS and email</span></div><div><small>CONNECTED FLOW</small><b>1 record</b><span>Lead through payment</span></div><div><small>FIELD VISIBILITY</small><b>Live</b><span>Office and crews synced</span></div></div>
+      <div class="outcome-grid">
+        <article class="outcome reveal"><span>01</span><div class="outcome-icon">↯</div><h3>Respond while the lead is hot.</h3><p>Forms, calls and messages enter one pipeline. AI agents start the follow-up before the opportunity goes cold.</p><b>24/7 automated response</b></article>
+        <article class="outcome reveal"><span>02</span><div class="outcome-icon">⌁</div><h3>Quote with real measurements.</h3><p>Move report quantities into your estimate without typing the same roof information twice.</p><b>Measurement → estimate</b></article>
+        <article class="outcome reveal"><span>03</span><div class="outcome-icon">✓</div><h3>Know what happens next.</h3><p>Contracts, deposits, schedules, crews and job progress stay visible from one command center.</p><b>Lead → paid project</b></article>
+        <article class="outcome reveal"><span>04</span><div class="outcome-icon">◎</div><h3>Turn your website into a sales system.</h3><p>Every form submission creates a structured lead with source, service, address and conversation history already attached.</p><b>Website → qualified opportunity</b></article>
+        <article class="outcome reveal"><span>05</span><div class="outcome-icon">AI</div><h3>Give your team an AI workforce.</h3><p>Voice, message, scheduling and follow-up agents handle repetitive communication while your people stay in control.</p><b>Retell-powered AI agents</b></article>
+        <article class="outcome reveal"><span>06</span><div class="outcome-icon">∞</div><h3>Keep every team on the same page.</h3><p>Office staff, crews and customers see the right information at the right time without chasing scattered updates.</p><b>One connected workspace</b></article>
       </div>
+    </section>
 
-      <div class="faq-item reveal">
-        <button class="faq-q" type="button">
-          <span>What do you need from me to start?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            We’ll ask for your business name, services, service area, branding (logo/colors if available),
-            and examples of websites you like. If you don’t have content ready, we’ll guide you step-by-step.
-          </div>
-        </div>
-      </div>
+    <section class="everything reveal">
+      <div><span>MORE THAN A CRM</span><h2>Everything your company needs<br>to run and grow.</h2></div>
+      <div class="everything-list"><span>Lead management <i>✓</i></span><span>Website forms <i>✓</i></span><span>Measurements reports <i>✓</i></span><span>Estimates & price books <i>✓</i></span><span>E-signatures <i>✓</i></span><span>Invoices & payments <i>✓</i></span><span>Google Calendar <i>✓</i></span><span>Projects & crews <i>✓</i></span><span>Photo documentation <i>✓</i></span><span>Automated follow-up <i>✓</i></span><span>Customer portal <i>✓</i></span><span>AI Agent Hub <i>✓</i></span></div>
+    </section>
 
-      <div class="faq-item reveal">
-        <button class="faq-q" type="button">
-          <span>How do you price projects?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Pricing depends on the scope: number of pages, features, SEO setup, and lead systems.
-            We’ll recommend the best approach after a quick demo / consultation.
-          </div>
-        </div>
-      </div>
+    <section class="book-demo" id="book-demo">
+      <div class="demo-copy reveal"><span>SEE IT WITH YOUR BUSINESS</span><h2>BOOK YOUR<br><em>LIVE DEMO.</em></h2><p>This is not a generic software presentation. We map XAU Prime around the way your company receives leads, creates estimates and manages jobs—then show where AI and automation can remove delays.</p><div class="demo-agenda"><article><b>01</b><span><strong>Map your current workflow</strong><small>Website, phone calls, estimates and production.</small></span></article><article><b>02</b><span><strong>Build your XAU Prime flow</strong><small>See the exact modules your team would use.</small></span></article><article><b>03</b><span><strong>Leave with a clear plan</strong><small>Recommended setup, timeline and next steps.</small></span></article></div><div class="demo-trust"><span>✓ Personalized</span><span>✓ No pressure</span><span>✓ Real answers</span></div></div>
+      <div class="booking-card reveal"><div class="booking-head"><div><small>LIVE PRODUCT WALKTHROUGH</small><h3>Choose your demo</h3></div><span>30 MIN · GOOGLE MEET</span></div><div class="calendar-toolbar"><button aria-label="Previous week">←</button><div><b>September 2026</b><small>Eastern Time · Rhode Island</small></div><button aria-label="Next week">→</button></div><div class="date-row"><button class="date-choice"><small>TUE</small><b>8</b><em>3 times</em></button><button class="date-choice active"><small>WED</small><b>9</b><em>4 times</em></button><button class="date-choice"><small>THU</small><b>10</b><em>2 times</em></button><button class="date-choice"><small>FRI</small><b>11</b><em>3 times</em></button></div><div class="booking-label">AVAILABLE TIMES</div><div class="time-row"><button class="time-choice">10:00 AM</button><button class="time-choice active">12:30 PM</button><button class="time-choice">2:00 PM</button><button class="time-choice">4:30 PM</button></div><div class="meeting-summary"><span><small>SELECTED</small><b>Wednesday, Sep 9 · 12:30 PM</b></span><span><small>WITH</small><b>XAU Studio Product Team</b></span></div><div class="booking-form"><label><span>YOUR NAME</span><input id="demoName" placeholder="Bryan Gonzalez" aria-label="Your name"></label><label><span>WORK EMAIL</span><input id="demoEmail" type="email" placeholder="you@company.com" aria-label="Work email"></label><button id="bookDemoButton">Confirm my live demo <span>→</span></button></div><p class="booking-note">A Google Meet link and calendar invitation will be sent after confirmation.</p><div class="booking-success" aria-live="polite"><i>✓</i><div><b>Your demo is selected.</b><small>Wednesday at 12:30 PM · Confirmation preview</small></div></div></div>
+    </section>
+
+    <section class="journey reveal">
+      <div class="journey-copy"><span>MODELED CONTRACTOR WORKFLOW</span><h2>From first click<br>to paid project.</h2><p>See how one connected system turns attention into accountable sales activity. Every stage below is tracked inside XAU Prime so the team can see conversion, speed and projected revenue—not guess what happened to the lead.</p><div class="case-tags"><b>WEBSITE</b><b>AI RESPONSE</b><b>ESTIMATES</b><b>FOLLOW-UP</b></div></div>
+      <div class="funnel-panel"><div class="funnel-head"><span>LIVE FUNNEL · 30 DAYS</span><b>All sources</b></div><ol><li><small>01 · TRAFFIC</small><b>Website visits</b><strong>2,847</strong><em>100% entered</em><i style="--w:100%"></i></li><li><small>02 · CAPTURE</small><b>Qualified leads</b><strong>186</strong><em>6.5% conversion</em><i style="--w:76%"></i></li><li><small>03 · SALES</small><b>Estimates sent</b><strong>57</strong><em>30.6% of leads</em><i style="--w:53%"></i></li><li class="success"><small>04 · WON</small><b>Closed jobs</b><strong>21</strong><em>36.8% close rate</em><i style="--w:36%"></i></li></ol></div>
+      <div class="case-results"><div class="case-revenue"><small>PROJECTED REVENUE</small><b>$215,760</b><em>↑ 28% vs. previous period</em></div><div class="case-kpis"><article><small>AVG. RESPONSE</small><b>42 sec</b><span>AI-assisted</span></article><article><small>AVG. JOB VALUE</small><b>$10,274</b><span>21 won jobs</span></article><article><small>FOLLOW-UP TASKS</small><b>94%</b><span>Completed on time</span></article></div><p>Illustrative data shown to demonstrate the reporting and conversion flow available inside XAU Prime CRM.</p></div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div><span>READY WHEN YOU ARE</span><h2>LET'S BUILD YOUR<br><em>GROWTH SYSTEM.</em></h2><p>Website. CRM. Automation. One studio behind it all.</p></div>
+      <a class="btn big" href="mailto:hello@xaustudio.co">Start a Project <span>↗</span></a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-cta"><span>WEBSITES · CRM · AI AGENTS</span><h2>READY TO BUILD A<br><em>BUSINESS THAT MOVES?</em></h2><div><a class="btn big" href="mailto:hello@xaustudio.co">Start a Project <b>↗</b></a><a href="#book-demo">Book a CRM demo →</a></div></div>
+    <div class="footer-main">
+      <div class="footer-intro"><div class="brand footer-brand"><span class="brand-x"><img src="./assets/xo-mascot.png" alt="" /></span><span><b>AU</b><small>STUDIO CO.</small></span></div><p>We design websites, XAU Prime CRM and intelligent automations that help service businesses win and manage more work.</p></div>
+      <div class="footer-column"><span>EXPLORE</span><a href="#work">Selected work</a><a href="#core-demo">XAU Prime CRM</a><a href="#system">Services</a><a href="#book-demo">Book a demo</a></div>
+      <div class="footer-column"><span>SERVICES</span><a href="#websites">Websites</a><a href="#core-demo">XAU Prime CRM</a><a href="#system">Automation</a><a href="#ai-agents">AI Agents</a></div>
+      <div class="footer-contact"><span>START SOMETHING GREAT</span><a href="mailto:hello@xaustudio.co">hello@xaustudio.co ↗</a><p>Rhode Island · Working everywhere</p></div>
     </div>
-
-    <div class="faq-foot reveal">
-      Still have questions? Use WhatsApp below or schedule a demo — we respond fast.
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2 class="reveal">Start your project</h2>
-  <p class="reveal">Schedule a demo and see how your future website will work.</p>
-  <a href="https://calendly.com/xaustudioco/30min" class="btn reveal">Schedule a Demo</a>
-</section>
-
-<div class="whatsapp" onclick="window.open('https://wa.me/14012889597')">💬</div>
-
-<script>
-/* =================================================================================================
-   1) Reveal animations (professional transitions)
-   ================================================================================================= */
-const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-      revealObs.unobserve(e.target);
-    }
-  });
-},{ threshold: 0.18 });
-revealEls.forEach(el=>revealObs.observe(el));
-
-/* =================================================================================================
-   2) Stats counter + slow appear (your existing behavior, just more stable)
-   ================================================================================================= */
-const cards=document.querySelectorAll('.stat-card');
-
-const statsObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-
-      let num=entry.target.querySelector('.stat-number');
-      let target=+num.getAttribute('data-target');
-
-      let count=0;
-      let speed=45; // your slow vibe
-      let update=setInterval(()=>{
-        count++;
-        num.innerText=count+"+";
-        if(count>=target) clearInterval(update);
-      },speed);
-
-      statsObserver.unobserve(entry.target);
-    }
-  });
-},{threshold:.5});
-
-cards.forEach(card=>statsObserver.observe(card));
-
-/* =================================================================================================
-   3) FAQ accordion (premium)
-   ================================================================================================= */
-const faqItems = document.querySelectorAll('.faq-item');
-
-faqItems.forEach(item=>{
-  const btn = item.querySelector('.faq-q');
-  btn.addEventListener('click', ()=>{
-    // close others (keeps it clean)
-    faqItems.forEach(other=>{
-      if(other !== item) other.classList.remove('open');
-    });
-    item.classList.toggle('open');
-  });
-});
-
-/* =================================================================================================
-   4) (Optional) Make preview start centered a bit nicer
-   ================================================================================================= */
-window.addEventListener('load', ()=>{
-  const viewport = document.querySelector('.preview-viewport');
-  if(viewport){
-    viewport.scrollTop = 0;
-    viewport.scrollLeft = 0;
-  }
-});
-</script>
-
+    <div class="footer-bottom"><p>© 2026 XAU Studio Co. All rights reserved.</p><a href="https://www.xaustudio.co">xaustudio.co</a><span>Designed to move.</span></div>
+  </footer>
+  <script src="./script.js"></script>
+  <script src="./core.js"></script>
+  <script src="./sales.js"></script>
 </body>
 </html>
